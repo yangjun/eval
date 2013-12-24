@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.eu.evaluation.server.service.impl;
 
 import com.eu.evaluation.model.EvaluatedData;
-import com.eu.evaluation.model.eva.EvaluateItem;
+import com.eu.evaluation.model.NameEvaluatedData;
 import com.eu.evaluation.model.eva.UniqueEvaluateItem;
 import com.eu.evaluation.model.eva.history.EvaluateItemHistory;
 import com.eu.evaluation.model.eva.history.UniqueEvaluateItemHistory;
@@ -27,54 +26,61 @@ import org.springframework.stereotype.Component;
  * @author dell
  */
 @Component
-public class UniqueEvaluate implements Evaluating<UniqueEvaluateItem , UniqueEvaluateItemHistory>{
-    
+public class UniqueEvaluate implements Evaluating<UniqueEvaluateItem, UniqueEvaluateItemHistory> {
+
     protected Log logger = LogFactory.getLog(this.getClass());
-    
+
+    private String notPassMessage = "";
+
     @Autowired
     private EvaluateItemHistoryDAO evaluateItemHistoryDAO;
-    
+
     @Autowired
     private DefaultDAO defaultDAO;
 
     public boolean evaluate(String evaluateItemHistoryID, String instanceClass, int instanceType, String instanceID) throws Exception {
         String debugInfo = "开始执行唯一性评测，实体 = {0} , 实体ID = {1} , 评测历史项目ID = {2}";
-        logger.debug(MessageFormat.format(debugInfo , new Object[]{instanceClass , instanceID , evaluateItemHistoryID}));
-        
+        logger.debug(MessageFormat.format(debugInfo, new Object[]{instanceClass, instanceID, evaluateItemHistoryID}));
+
         EvaluateItemHistory ev = evaluateItemHistoryDAO.get(evaluateItemHistoryID);
-        
-        Object entity = defaultDAO.findEvaluateData(instanceClass, instanceID , ev.getEvaluateVersion().getId());//获取被评测数据
-        
-        logger.debug("被评测数据ID ： " + ((EvaluatedData)entity).getId());
-        
+        Object entity = defaultDAO.findEvaluateData(instanceClass, instanceID, ev.getEvaluateVersion().getId());//获取被评测数据
+
+        logger.debug("被评测数据ID ： " + ((EvaluatedData) entity).getId());
+
         String field = ev.getFieldDictionary().getPropertyName();
         Object fieldValue = BeanUtils.getProperty(entity, field);
-        
+
         String jpql = "select count(*) from {0} t where t.{1} = :value and t.evaluateVersion.id = :evID";
-        jpql = MessageFormat.format(jpql, new Object[]{instanceClass , field});
-        
+        jpql = MessageFormat.format(jpql, new Object[]{instanceClass, field});
+
         MapSqlParameterSource params = new MapSqlParameterSource("value", fieldValue);
         params.addValue("evID", ev.getEvaluateVersion().getId());
-        
+
         long count = defaultDAO.executeCount(jpql, params);
         
+        if (count > 1){
+            notPassMessage = getErrorMsg(ev, entity);
+        }
+
         debugInfo = "完成实体唯一性评测，实体 = {0} ，实体ID = {1} , 评测历史项目ID = {2}";
-        logger.debug(MessageFormat.format(debugInfo , new Object[]{instanceClass , instanceID , evaluateItemHistoryID}));
-        return count == 1;
+        logger.debug(MessageFormat.format(debugInfo, new Object[]{instanceClass, instanceID, evaluateItemHistoryID}));
+        return count <= 1;
     }
 
     public String notPassedReason(String evaluateItemHistoryID, String instanceClass, int instanceType, String instanceID) throws Exception {
-        EvaluateItemHistory ev = evaluateItemHistoryDAO.get(evaluateItemHistoryID);
-        
-        String reason = "{0}的{1}属性，唯一性评测未通过！";
-
-        reason = MessageFormat.format(reason, new Object[]{ev.getObjectDictionary().getDisplayname(), ev.getFieldDictionary().getDisplayname()});
-
-        return new String(reason.getBytes() , "GBK");
+        return notPassMessage;
     }
 
     public void supplementHistory(UniqueEvaluateItem item, UniqueEvaluateItemHistory itemHistory) {
         //无额外信息
     }
 
+    private String getErrorMsg(EvaluateItemHistory ev, Object entity) {
+        notPassMessage = "{0} “{1}” 的 “{2}”属性，唯一性评测未通过！";
+        String name = ((EvaluatedData) entity).getId();
+        if (entity instanceof NameEvaluatedData) {
+            name = ((NameEvaluatedData) entity).getName();
+        }
+        return MessageFormat.format(notPassMessage, new Object[]{ev.getObjectDictionary().getDisplayname(),name , ev.getFieldDictionary().getDisplayname()});
+    }
 }

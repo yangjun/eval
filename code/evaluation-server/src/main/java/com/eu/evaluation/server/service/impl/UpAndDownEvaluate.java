@@ -77,13 +77,13 @@ public class UpAndDownEvaluate implements Evaluating<UpAndDownEvlauateItem , UpA
             }
             
             if (upCount != 1 && downCount <=0){
-                String message = "{0} {1} 的上下级关系评测未通过。原因：不属于任何{3}；不包含任何{4}！";
+                String message = "{0} “{1}” 的上下级关系评测未通过。原因：不属于任何{2}；不包含任何{3}！";
                 return MessageFormat.format(message , new Object[]{ev.getObjectDictionary().getDisplayname() , name , ev.getUpEntity().getDisplayname() , ev.getDownEntity().getDisplayname()});
             }else if (upCount != 1){
-                String message = "{0} {1} 的上下级关系评测未通过。原因：不属于任何{3}！";
+                String message = "{0} “{1}” 的上下级关系评测未通过。原因：不属于任何{2}！";
                 return MessageFormat.format(message , new Object[]{ev.getObjectDictionary().getDisplayname() , name , ev.getUpEntity().getDisplayname()});
             }else{
-                String message = "{0} {1} 的上下级关系评测未通过。原因：不包含任何{4}！";
+                String message = "{0} “{1}” 的上下级关系评测未通过。原因：不包含任何{2}！";
                 return MessageFormat.format(message , new Object[]{ev.getObjectDictionary().getDisplayname() , name , ev.getDownEntity().getDisplayname()});
             }
         }else{

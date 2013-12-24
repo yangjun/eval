@@ -5,6 +5,8 @@
  */
 package com.eu.evaluation.server.service.impl;
 
+import com.eu.evaluation.model.EvaluatedData;
+import com.eu.evaluation.model.NameEvaluatedData;
 import com.eu.evaluation.model.eva.EvaluateItem;
 import com.eu.evaluation.model.eva.NotNullEvaluateItem;
 import com.eu.evaluation.model.eva.history.EvaluateItemHistory;
@@ -29,6 +31,8 @@ import org.springframework.stereotype.Component;
 public class NotNullEvaluate implements Evaluating<NotNullEvaluateItem , NotNullEvaluateItemHistory> {
 
     protected Log logger = LogFactory.getLog(this.getClass());
+    
+    private String notPassMessage = "";
 
     @Autowired
     private EvaluateItemHistoryDAO evaluateItemHistoryDAO;
@@ -41,14 +45,12 @@ public class NotNullEvaluate implements Evaluating<NotNullEvaluateItem , NotNull
         logger.debug(MessageFormat.format(debugInfo , new Object[]{instanceClass , instanceID , evaluateItemHistoryID}));
         
         debugInfo = "实体{0}的字段非空评测：当前对象 = {1} ； 字段 = {2} ； 值 = {3}";
-        
         String endDebugInfo = "完成实体唯一性评测，实体 = {0} ， 实体ID = {1} , 评测历史项目ID = {2}";
         
         EvaluateItemHistory ev = evaluateItemHistoryDAO.get(evaluateItemHistoryID);//查找评测项目
+        Object entity = defaultDAO.findEvaluateData(instanceClass, instanceID , ev.getEvaluateVersion().getId());//获取被评测数据
         
-        Object obj = defaultDAO.findEvaluateData(instanceClass, instanceID , ev.getEvaluateVersion().getId());//获取被评测数据
-        
-
+        Object obj = entity;
         String[] names = ev.getFieldDictionary().getPropertyName().split("\\.");
         for (String propertyName : names) {
             String firstLetter = propertyName.substring(0, 1).toUpperCase();
@@ -60,6 +62,7 @@ public class NotNullEvaluate implements Evaluating<NotNullEvaluateItem , NotNull
             
             if (invokedValue == null) {//getMethod返回空值，则初始化这个字段
                 logger.debug(MessageFormat.format(endDebugInfo , new Object[]{instanceClass , instanceID , evaluateItemHistoryID}));
+                notPassMessage = getErrorMsg(ev, entity);
                 return false;
             }
             obj = invokedValue;//为obj赋新值
@@ -70,41 +73,19 @@ public class NotNullEvaluate implements Evaluating<NotNullEvaluateItem , NotNull
     }
 
     public String notPassedReason(String evaluateItemHistoryID, String instanceClass , int instanceType , String instanceID) throws Exception {
-        EvaluateItemHistory ev = evaluateItemHistoryDAO.get(evaluateItemHistoryID);
-        
-        String reason = "{0}的{1}属性，非空评测未通过！";
-
-        reason = MessageFormat.format(reason, new Object[]{ev.getObjectDictionary().getDisplayname(), ev.getFieldDictionary().getDisplayname()});
-
-        return new String(reason.getBytes() , "GBK");
-    }
-
-    /**
-     * 得到类中的一个字段，即使是父类的字段也可获取
-     *
-     * @param aClass 需要获取字段的类
-     * @param name 需要获取的字段名称
-     * @throws java.lang.NoSuchFieldException
-     * @return 获取的字段
-     */
-    private Field getFieldWithSupperClass(Class aClass, String name) throws NoSuchFieldException {
-        Field field = null;
-        try {
-            field = aClass.getDeclaredField(name);
-        } catch (SecurityException ex) {
-            ex.printStackTrace();
-        } catch (NoSuchFieldException ex) {
-            if (aClass.getSuperclass() != null) {
-                field = getFieldWithSupperClass(aClass.getSuperclass(), name);
-            } else {
-                throw ex;
-            }
-        }
-        return field;
+        return notPassMessage;
     }
 
     public void supplementHistory(NotNullEvaluateItem item, NotNullEvaluateItemHistory itemHistory) {
         //无额外信息
     }
 
+    private String getErrorMsg(EvaluateItemHistory ev , Object entity){
+        notPassMessage = "{0} “{1}” 的 “{2}” 属性，非空评测未通过";
+        String name = ((EvaluatedData) entity).getId();
+        if (entity instanceof NameEvaluatedData) {
+            name = ((NameEvaluatedData) entity).getName();
+        }
+        return MessageFormat.format(notPassMessage, new Object[]{ev.getObjectDictionary().getDisplayname(),name , ev.getFieldDictionary().getDisplayname()});
+    }
 }
