@@ -7,7 +7,9 @@
  */
 
 
-App = Ember.Application.create();
+App = Ember.Application.create({
+  LOG_TRANSITIONS:true
+});
 
 App.Router.map(function () {
   // put your routes here
@@ -45,16 +47,16 @@ App.TypeAheadComponent = Ember.TextField.extend({
   initializeTypeahead:function (url, template) {
     var _this = this;
     this.typeahead = this.$().typeahead({
-      name: 'twitter-oss',
-      prefetch: url,
-      limit: 3,
-      template: [
+      name:'twitter-oss',
+      prefetch:url,
+      limit:3,
+      template:[
         '<p class="repo-language">{{language}}</p>',
         '<p class="repo-name">{{name}}</p>',
         '<p class="repo-description">{{description}}</p>'
       ].join(''),
-      header: '<h3 class="league-name">language</h3>',
-      engine: Hogan
+      header:'<h3 class="league-name">language</h3>',
+      engine:Hogan
     });
 
     this.typeahead.on("typeahead:selected", function (event, item) {

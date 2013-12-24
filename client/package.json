@@ -27,7 +27,8 @@
     "load-grunt-tasks": "~0.1.0",
     "connect-livereload": "~0.2.0",
     "time-grunt": "~0.1.1",
-    "grunt-ember-templates": "~0.4.13"
+    "grunt-ember-templates": "~0.4.18",
+    "grunt-contrib-qunit": "~0.3.0"
   },
   "engines": {
     "node": ">=0.8.0"
