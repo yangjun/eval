@@ -1,12 +1,11 @@
 /**
  * Created with JetBrains WebStorm.
  * User: yangjungis@126.com
- * Date: 13-12-24
- * Time: 下午8:51
+ * Date: 13-12-26
+ * Time: 下午9:56
  * To change this template use File | Settings | File Templates.
  */
 
+App.Error1Controller = Ember.ObjectController.extend({
 
-App.FooterView = Em.View.extend({
-  templateName: 'footer'
 });

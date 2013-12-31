@@ -7,7 +7,7 @@ var _ref;
 
 (function() {
 
-Ember.TEMPLATES["chart"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+Ember.TEMPLATES["chart.js"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', hashContexts, hashTypes, escapeExpression=this.escapeExpression;
@@ -20,7 +20,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
     'width': ("outerWidth"),
     'height': ("outerHeight")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">\n  <g class=\"chart-viewport\" ");
+  data.buffer.push(">\n  <g class=\"chart.js-viewport\" ");
   hashContexts = {'transform': depth0};
   hashTypes = {'transform': "STRING"};
   data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
@@ -237,7 +237,7 @@ Ember.Charts.FloatingTooltipMixin = Ember.Mixin.create({
   },
   didInsertElement: function() {
     this._super();
-    $("body").append("<div class='chart-float-tooltip' id='" + (this.get('tooltipId')) + "'></div>");
+    $("body").append("<div class='chart.js-float-tooltip' id='" + (this.get('tooltipId')) + "'></div>");
     return this.hideTooltip();
   },
   willDestroyElement: function() {
@@ -867,8 +867,8 @@ Ember.Charts.PieLegend = Ember.Mixin.create({
 
 
 Ember.Charts.ChartComponent = Ember.Component.extend(Ember.Charts.Colorable, Ember.AddeparMixins.ResizeHandlerMixin, {
-  templateName: 'chart',
-  classNames: ['chart-frame', 'scroll-y'],
+  templateName: 'chart.js',
+  classNames: ['chart.js-frame', 'scroll-y'],
   horizontalMargin: 30,
   verticalMargin: 30,
   marginRight: Ember.computed.alias('horizontalMargin'),
@@ -886,7 +886,7 @@ Ember.Charts.ChartComponent = Ember.Component.extend(Ember.Charts.Colorable, Emb
     return this.get('outerHeight') - this.get('marginBottom') - this.get('marginTop');
   }).property('outerHeight', 'marginBottom', 'marginTop'),
   $viewport: Ember.computed(function() {
-    return this.$('.chart-viewport')[0];
+    return this.$('.chart.js-viewport')[0];
   }),
   viewport: Ember.computed(function() {
     return d3.select(this.get('$viewport'));
@@ -945,7 +945,7 @@ Ember.Charts.ChartComponent = Ember.Component.extend(Ember.Charts.Colorable, Emb
     return this.set('defaultOuterWidth', this.$().width());
   },
   clearChart: function() {
-    return this.$('.chart-viewport').children().remove();
+    return this.$('.chart.js-viewport').children().remove();
   },
   draw: function() {
     if (this.get('state') !== 'inDOM') {
@@ -966,7 +966,7 @@ Ember.Charts.ChartComponent = Ember.Component.extend(Ember.Charts.Colorable, Emb
 
 
 Ember.Charts.HorizontalBarComponent = Ember.Charts.ChartComponent.extend(Ember.Charts.FloatingTooltipMixin, {
-  classNames: ['chart-horizontal-bar'],
+  classNames: ['chart.js-horizontal-bar'],
   formatValue: d3.format('.2s'),
   formatValueLong: d3.format(',.r'),
   selectedSortType: 'value',
@@ -1225,7 +1225,7 @@ Ember.Charts.HorizontalBarComponent = Ember.Charts.ChartComponent.extend(Ember.C
   }
 });
 
-Ember.Handlebars.helper('horizontal-bar-chart', Ember.Charts.HorizontalBarComponent);
+Ember.Handlebars.helper('horizontal-bar-chart.js', Ember.Charts.HorizontalBarComponent);
 
 
 })();
@@ -1234,7 +1234,7 @@ Ember.Handlebars.helper('horizontal-bar-chart', Ember.Charts.HorizontalBarCompon
 
 
 Ember.Charts.PieComponent = Ember.Charts.ChartComponent.extend(Ember.Charts.PieLegend, Ember.Charts.FloatingTooltipMixin, {
-  classNames: ['chart-pie'],
+  classNames: ['chart.js-pie'],
   formatValue: d3.format('.2s'),
   formatValueLong: d3.format(',.r'),
   minSlicePercent: 5,
@@ -1563,7 +1563,7 @@ Ember.Charts.PieComponent = Ember.Charts.ChartComponent.extend(Ember.Charts.PieL
   }
 });
 
-Ember.Handlebars.helper('pie-chart', Ember.Charts.PieComponent);
+Ember.Handlebars.helper('pie-chart.js', Ember.Charts.PieComponent);
 
 
 })();
@@ -1572,7 +1572,7 @@ Ember.Handlebars.helper('pie-chart', Ember.Charts.PieComponent);
 
 
 Ember.Charts.VerticalBarComponent = Ember.Charts.ChartComponent.extend(Ember.Charts.Legend, Ember.Charts.FloatingTooltipMixin, Ember.Charts.AxesMixin, {
-  classNames: ['chart-vertical-bar'],
+  classNames: ['chart.js-vertical-bar'],
   formatValue: d3.format('.2s'),
   formatValueLong: d3.format(',.r'),
   ungroupedSeriesName: 'Other',
@@ -2064,7 +2064,7 @@ Ember.Charts.VerticalBarComponent = Ember.Charts.ChartComponent.extend(Ember.Cha
   }
 });
 
-Ember.Handlebars.helper('vertical-bar-chart', Ember.Charts.VerticalBarComponent);
+Ember.Handlebars.helper('vertical-bar-chart.js', Ember.Charts.VerticalBarComponent);
 
 
 })();
@@ -2073,7 +2073,7 @@ Ember.Handlebars.helper('vertical-bar-chart', Ember.Charts.VerticalBarComponent)
 
 
 Ember.Charts.ScatterComponent = Ember.Charts.ChartComponent.extend(Ember.Charts.Legend, Ember.Charts.FloatingTooltipMixin, Ember.Charts.AxesMixin, {
-  classNames: ['chart-scatter'],
+  classNames: ['chart.js-scatter'],
   formatXValue: d3.format('.2s'),
   formatYValue: d3.format('.2s'),
   formatXValueLong: d3.format(',.r'),
@@ -2446,7 +2446,7 @@ Ember.Charts.ScatterComponent = Ember.Charts.ChartComponent.extend(Ember.Charts.
   }
 });
 
-Ember.Handlebars.helper('scatter-chart', Ember.Charts.ScatterComponent);
+Ember.Handlebars.helper('scatter-chart.js', Ember.Charts.ScatterComponent);
 
 
 })();
@@ -2455,7 +2455,7 @@ Ember.Handlebars.helper('scatter-chart', Ember.Charts.ScatterComponent);
 
 
 Ember.Charts.TimeSeriesComponent = Ember.Charts.ChartComponent.extend(Ember.Charts.Legend, Ember.Charts.TimeSeriesLabeler, Ember.Charts.FloatingTooltipMixin, Ember.Charts.HasTimeSeriesRule, Ember.Charts.AxesMixin, {
-  classNames: ['chart-time-series'],
+  classNames: ['chart.js-time-series'],
   formatTime: d3.time.format('%Y-%m-%d'),
   formatTimeLong: d3.time.format('%a %b %-d, %Y'),
   formatValue: d3.format('.2s'),
@@ -3134,7 +3134,7 @@ Ember.Charts.TimeSeriesComponent = Ember.Charts.ChartComponent.extend(Ember.Char
   }
 });
 
-Ember.Handlebars.helper('time-series-chart', Ember.Charts.TimeSeriesComponent);
+Ember.Handlebars.helper('time-series-chart.js', Ember.Charts.TimeSeriesComponent);
 
 
 })();
@@ -3143,7 +3143,7 @@ Ember.Handlebars.helper('time-series-chart', Ember.Charts.TimeSeriesComponent);
 
 
 Ember.Charts.BubbleComponent = Ember.Charts.ChartComponent.extend(Ember.Charts.FloatingTooltipMixin, {
-  classNames: ['chart-bubble'],
+  classNames: ['chart.js-bubble'],
   layoutGravity: -0.01,
   damper: 0.1,
   charge: Ember.computed(function() {
@@ -3258,7 +3258,7 @@ Ember.Charts.BubbleComponent = Ember.Charts.ChartComponent.extend(Ember.Charts.F
   }
 });
 
-Ember.Handlebars.helper('bubble-chart', Ember.Charts.BubbleComponent);
+Ember.Handlebars.helper('bubble-chart.js', Ember.Charts.BubbleComponent);
 
 
 })();

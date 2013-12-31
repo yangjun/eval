@@ -12,5 +12,6 @@ App.Router.map(function(){
       this.route('edit');
     });
     this.route('create');
-  });
+  }),
+  this.route('about');
 });

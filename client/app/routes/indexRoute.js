@@ -7,6 +7,11 @@
  */
 
 App.IndexRoute = Ember.Route.extend({
+  model: function() {
+//   throw new App.Error("Unable to find translation", 404);
+  },
+  setupController: function(controller, model) {
+  }
 //  redirect:function () {
 //    this.transitionTo('users');
 //  }
