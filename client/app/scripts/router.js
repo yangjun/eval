@@ -6,12 +6,13 @@
  * To change this template use File | Settings | File Templates.
  */
 
-App.Router.map(function(){
-  this.resource('users', function(){
-    this.resource('user', { path:'/:user_id' }, function(){
+App.Router.map(function () {
+  this.route('login');
+  this.resource('users', function () {
+    this.resource('user', { path:'/:user_id' }, function () {
       this.route('edit');
     });
     this.route('create');
-  }),
+  })
   this.route('about');
 });
