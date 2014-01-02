@@ -4,6 +4,16 @@
 *.jar
 *.war
 *.ear
+
+# grunt
 node_modules/
 .idea/
 .tmp/
+
+# emberjs
+scripts/components.js
+scripts/controllers.js
+scripts/models.js
+scripts/routes.js
+scripts/templates.js
+scripts/views.js
