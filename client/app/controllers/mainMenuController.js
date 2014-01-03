@@ -9,8 +9,8 @@
 App.MainMenuController = Ember.Controller.extend({
   // 配置一级菜单
   items:[
-    {name:"login",
-      title:"登录"
+    {name:"count",
+      title:"统计"
     },
     {name:"user",
       title:"用户",
