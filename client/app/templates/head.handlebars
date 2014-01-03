@@ -1,13 +1,22 @@
+<<<<<<< HEAD
 <!-- Docs master nav -->
 <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
+=======
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">{{t app.title}}</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+>>>>>>> home
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+<<<<<<< HEAD
             <a href="./" class="navbar-brand">Bootstrap</a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
@@ -40,3 +49,14 @@
         </nav>
 
 
+=======
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          {{render "mainMenu" mainMenu}}
+            <ul class="nav navbar-nav navbar-right">
+                <li>{{link-to "XXX用户" "login"}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+>>>>>>> home

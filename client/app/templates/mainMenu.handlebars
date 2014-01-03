@@ -1,0 +1,9 @@
+{{#each items}}
+    <li>
+      {{#if param}}
+        {{link-to title name param}}
+      {{else}}
+        {{link-to title name}}
+      {{/if}}
+    </li>
+{{/each}}
