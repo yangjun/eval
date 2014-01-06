@@ -9,7 +9,7 @@
 App.MainMenuController = Ember.Controller.extend({
   // 配置一级菜单
   items:[
-    {name:"count",
+    {name:"count.index",
       title:"评测统计"
     },
    /**	{name:"norm",
@@ -24,7 +24,7 @@ App.MainMenuController = Ember.Controller.extend({
     },**/
     
     {name:"user",
-      title:"用户",
+      title:"菜单2",
       param:"2"}
   ]
 });
