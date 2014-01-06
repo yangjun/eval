@@ -8,6 +8,7 @@
 
 App.Router.map(function() {
 	this.route('login');
+
 	this.resource('users', function() {
 		this.resource('user', {
 			path : '/:user_id'
@@ -15,14 +16,12 @@ App.Router.map(function() {
 			this.route('edit');
 		});
 		this.route('create');
-	})
+	});
+
 	this.route('about');
 
 	this.resource("count", function() {
-		this.route("editpassword", {
-			path : "/pw/:user_id"
-		});
-		this.route("find");
+		this.route("overview");
 	});
 
 }); 
