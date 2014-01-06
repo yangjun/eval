@@ -1,36 +1,45 @@
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
        
 <!--折叠开始-->
 <div class="accordion" id="accordion2">
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-        Collapsible Group Item #1
-      </a>
+    <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+            数据总体质量评价
+       </button>
     </div>
-    <div id="collapseOne" class="accordion-body collapse in">
+    <div id="collapseOne" class="accordion-body collapse">
       <div class="accordion-inner">
-        Anim pariatur cliche...
+      <div class="btn-group-vertical">
+         <ul>   {{#link-to 'count'  href=false}}<a {{bindAttr href="view.href"}} href="#">总体质量</a>{{/link-to}}</ul>
+			<ul>{{#link-to 'count'  href=false}}<a {{bindAttr href="view.href"}} href="#">维度资源评测</a>{{/link-to}}</ul>
+			<ul>{{#link-to 'count'  href=false}}<a {{bindAttr href="view.href"}} href="#">单项资源总体质量</a>{{/link-to}}</ul>
+			</div>	      
       </div>
     </div>
   </div>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-        Collapsible Group Item #2
-      </a>
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+           数据质量趋势
+      </button>
     </div>
     <div id="collapseTwo" class="accordion-body collapse">
       <div class="accordion-inner">
-        Anim pariatur cliche...
+       <div class="btn-group-vertical">
+            <ul>{{#link-to 'count'  href=false}}<a {{bindAttr href="view.href"}} href="#">总体质量趋势</a>{{/link-to}}</ul>
+			<ul>{{#link-to 'count'  href=false}}<a {{bindAttr href="view.href"}} href="#">单项维度质量趋势</a>{{/link-to}}</ul>
+			<ul>{{#link-to 'count'  href=false}}<a {{bindAttr href="view.href"}} href="#">单项资源总体质量趋势</a>{{/link-to}}</ul>
+			<ul>{{#link-to 'count'  href=false}}<a {{bindAttr href="view.href"}} href="#">单项资源单项维度质量趋势</a>{{/link-to}}</ul>
+     </div>
       </div>
     </div>
   </div>
 </div>
 <!--折叠结束-->
     </div>
-    <div class="col-md-10" role="main">
+    <div class="col-md-9" role="main">
         <div class="row">
           {{render "map" map}}
         </div>
