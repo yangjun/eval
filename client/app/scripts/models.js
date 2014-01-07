@@ -131,6 +131,15 @@ App.Count.reopenClass({
     return App.Ajax.get(url);
   },
   
+  
+   /**
+   * 单资源
+   */
+  singleres:function () {
+    var url = 'rs/count/singleres.json';
+    // promise
+    return App.Ajax.get(url);
+  },
   /**
    * 单维度
    */

@@ -24,6 +24,7 @@ App.Router.map(function() {
 		this.route("overview");
 		this.route("dimensions");
 		this.route("overtrend");
+		this.route("singleres");
 	});
 
 }); 
