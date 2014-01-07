@@ -22,6 +22,8 @@ App.Router.map(function() {
 
 	this.resource("count", function() {
 		this.route("overview");
+		this.route("dimensions");
+		this.route("overtrend");
 	});
 
 }); 

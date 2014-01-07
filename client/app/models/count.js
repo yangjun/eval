@@ -19,5 +19,23 @@ App.Count.reopenClass({
     var url = 'rs/count/overview.json';
     // promise
     return App.Ajax.get(url);
+  },
+  
+  /**
+   * 总体趋势
+   */
+  overtrend:function () {
+    var url = 'rs/count/overtrend.json';
+    // promise
+    return App.Ajax.get(url);
+  },
+  
+  /**
+   * 单维度
+   */
+  dimensions:function () {
+    var url = 'rs/count/dimensions.json';
+    // promise
+    return App.Ajax.get(url);
   }
 });
