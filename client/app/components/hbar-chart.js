@@ -28,7 +28,11 @@ App.HbarChartComponent = Ember.Component.extend({
         "background-color":"#FFFFFF"
       },
       plot:{
-        "bar-width":"16px"
+        "bar-width":"16px",
+        valueBox:{
+          type:"all",
+          placement:"top-in",
+          "font-color": "#FFFFFF"}
       },
       "scale-x":{
         "values":content.scale,
