@@ -1,12 +1,12 @@
 /**
- * HbarChartComponent
+ * VbarChartComponent
  * User: yangjungis@126.com
  * Date: 13-12-26
  * Time: 上午9:19
  * To change this template use File | Settings | File Templates.
  */
 
-App.HbarChartComponent = Ember.Component.extend({
+App.VbarChartComponent = Ember.Component.extend({
   didInsertElement:function () {
     this.draw();
   },
@@ -18,7 +18,7 @@ App.HbarChartComponent = Ember.Component.extend({
     var content = this.get("content");
     var height = this.get("height");
     var data = {
-      type:"hbar",
+      type:"bar",
       "gradient-colors":"#0f2e52 #1c4577 #0f2e52",
       "gradient-stops":"0.1 0.5 0.9",
       "fill-angle":70,
@@ -29,7 +29,7 @@ App.HbarChartComponent = Ember.Component.extend({
       },
       plot:{
         "bar-width":"16px",
-        valueBox:{
+        "valueBox":{
           type:"all",
           placement:"top-in",
           "font-color": "#FFFFFF"}
