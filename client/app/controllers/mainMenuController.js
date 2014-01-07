@@ -7,24 +7,18 @@
  */
 
 App.MainMenuController = Ember.Controller.extend({
-  // 配置一级菜单
-  items:[
-    {name:"count.index",
-      title:"评测统计"
-    },
-   /**	{name:"norm",
-      title:"标准数据管理"
-    },
-    {name:"quota",
-      title:"评测指标管理"
-    },
-    
-    {name:"system",
-      title:"系统管理"
-    },**/
-    
-    {name:"user",
-      title:"菜单2",
-      param:"2"}
-  ]
-});
+	// 配置一级菜单
+	items : [{
+		name : "count.index",
+		title : "评测统计"
+	}, {
+		name : "norm.index",
+		title : "标准数据管理"
+	}, {
+		name : "quota.index",
+		title : "评测指标管理"
+	}, {
+		name : "system.index",
+		title : "系统管理"
+	}]
+}); 
