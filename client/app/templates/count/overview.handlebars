@@ -1,9 +1,18 @@
 <div class="row">
+ <h1 class="text-center">{{model.title}}</h1>
 
- {{type-ahead url='data/repos.json' template='' selection=item placeholder='请输入'}}
+
 
     <div class="col-md-12">
-        <h1>{{model.title}}</h1>
+     <div class="row">
+      <div class="col-md-2">
+        <p class="text-right">版本选择</p>
+      </div>
+      <div class="col-md-10">
+        {{type-ahead url='data/repos.json' template='' selection=item   placeholder='选择版本'}}
+      </div>
+    </div> 
+    
       {{radar-chart height=500 content=model}}
     </div>
 </div>
