@@ -11,9 +11,9 @@ node_modules/
 .tmp/
 
 # emberjs
-scripts/components.js
-scripts/controllers.js
-scripts/models.js
-scripts/routes.js
-scripts/templates.js
-scripts/views.js
+client/app/scripts/components.js
+client/app/scripts/controllers.js
+client/app/scripts/models.js
+client/app/scripts/routes.js
+client/app/scripts/templates.js
+client/app/scripts/views.js
