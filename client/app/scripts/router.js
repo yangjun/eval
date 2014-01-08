@@ -26,5 +26,17 @@ App.Router.map(function() {
 		this.route("overtrend");
 		this.route("singleres");
 	});
+	
+	this.resource("norm", function() {
+		
+	});
+	
+	this.resource("quota", function() {
+		
+	});
+	
+	this.resource("system", function() {
+		
+	});
 
 }); 
