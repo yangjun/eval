@@ -32,7 +32,7 @@ App.Router.map(function() {
 	});
 	
 	this.resource("quota", function() {
-		
+		this.route("integrity");
 	});
 	
 	this.resource("system", function() {
