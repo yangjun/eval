@@ -8,37 +8,24 @@
 
 // Quota
 
+
+	
 App.Quota = Ember.Object.extend({
 });
 
 App.Quota.reopenClass({
+	
   /**
-   * 总体质量
+   * 完整性评测指标管理
    */
-  overview:function () {
-    var url = 'rs/count/overview.json';
+  
+   
+   quotaIntegrity:function () {
+    var url = 'rs/quota/integrity.json';
     // promise
     return App.Ajax.get(url);
   },
   
-  /**
-   * 总体趋势
-   */
-  overtrend:function () {
-    var url = 'rs/count/overtrend.json';
-    // promise
-    return App.Ajax.get(url);
-  },
-  
-  
-   /**
-   * 单资源
-   */
-  singleres:function () {
-    var url = 'rs/count/singleres.json';
-    // promise
-    return App.Ajax.get(url);
-  },
   /**
    * 单维度
    */

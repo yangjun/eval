@@ -27,12 +27,14 @@ App.Router.map(function() {
 		this.route("singleres");
 	});
 	
-	this.resource("norm", function() {
-		
-	});
+	
 	
 	this.resource("quota", function() {
 		this.route("integrity");
+	});
+	
+	this.resource("norm", function() {
+		
 	});
 	
 	this.resource("system", function() {

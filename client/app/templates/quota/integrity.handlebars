@@ -1,25 +1,12 @@
-
-
 <div class="row">
+ <legend><h1 class="text-center">{{model.title}}</h1></legend>
 
-<h1 class="text-center">{{model.title}}</h1>
 
 
     <div class="col-md-12">
-        <div class="row">
-        
-      <div class="col-md-2">
-        <p class="text-right">版本选择</p>
-      </div>
-      <div class="col-md-4">
-        {{type-ahead url='data/repos.json' template='' selection=item   placeholder='选择不同的版本'}}
-      </div>
-      
-      <div class="col-md-2">
-        <p class="text-right">资源类别</p>
-      </div>
-      <div class="col-md-4">
-	    <select class="form-control" placeholder='选择不同类别的资源'>  
+     <div class="row">
+     <div class="col-md-4">
+      <select class="form-control" placeholder='选择不同类别的资源'>  
 		  <option>区域</option>
 		  <option>站点</option>
 		  <option>机房</option>
@@ -29,9 +16,32 @@
 		  <option>传输段</option>
 		</select>
      </div>
-    </div>
+     <div class="col-md-2">
+      <button type="button" class="btn btn-primary">
+                        保存
+                    </button>
+                    </div>
+    </div> 
+    <legend></legend>
     
-    <!--雷达图-->
-        {{vbar-chart height=500 content=model}}
+
+
+     <table class="table table-hover">
+		<thead>
+		    <tr>
+		     <th>   </th>
+		      <th>属性</th>
+		      <th>资源类型</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		     <td><input type="checkbox"></td>
+		      <td>...</td>
+		      <td>...</td>
+		    </tr>
+		  </tbody>
+    </table>
+   
     </div>
 </div>

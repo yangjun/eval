@@ -1,67 +1,14 @@
 <div class="row">
     <div class="col-md-2">
-
-
-
-
+        
+        
   {{#link-to "quota.integrity" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                          href="#">完整性评测指标管理</a>{{/link-to}}
-                  {{#link-to "quota.integrity" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                          href="#">唯一性评测指标管理</a>{{/link-to}}
-                  {{#link-to "quota.integrity" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                          href="#">规范性评测指标管理</a>{{/link-to}}
-
-
-
-        <!--折叠开始-->
-        <div class="accordion" id="accordion2">
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion2"
-                            href="#collapseOne">
-                        数据总体质量评价
-                    </button>
-                </div>
-                <div id="collapseOne" class="accordion-body collapse">
-                    <div class="accordion-inner">
-                        <div class="btn-group-vertical">
-                            <ul>
-                              {{#link-to "count.overview" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">总体质量</a>{{/link-to}}
-                              {{#link-to 'count.dimensions' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">维度资源评测</a>{{/link-to}}
-                              {{#link-to 'count' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">单项资源总体质量</a>{{/link-to}}
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion2"
-                            href="#collapseTwo">
-                        数据质量趋势
-                    </button>
-                </div>
-                <div id="collapseTwo" class="accordion-body collapse">
-                    <div class="accordion-inner">
-                        <div class="btn-group-vertical">
-                            <ul>{{#link-to 'count.overtrend'  href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">总体质量趋势</a>{{/link-to}}</ul>
-                            <ul>{{#link-to 'count'  href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">单项维度质量趋势</a>{{/link-to}}</ul>
-                            <ul>{{#link-to 'count'  href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">单项资源总体质量趋势</a>{{/link-to}}</ul>
-                            <ul>{{#link-to 'count'  href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">单项资源单项维度质量趋势</a>{{/link-to}}</ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--折叠结束-->
+          href="#">完整性评测指标管理</a>{{/link-to}}
+  {{#link-to "count.overview" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+          href="#">唯一性评测指标管理</a>{{/link-to}}
+  {{#link-to "count.overview" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+          href="#">规范性评测指标管理</a>{{/link-to}}
+        
     </div>
     <div class="col-md-10">
       {{outlet loading}}

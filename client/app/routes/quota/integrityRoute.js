@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-App.QuotaIntegrityRoute = Ember.Quota.extend({
+App.QuotaIntegrityRoute = Ember.Route.extend({
   model: function(params) {
     var self = this;
     var controller = self.controllerFor('quotaIntegrity');

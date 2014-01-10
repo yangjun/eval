@@ -13,6 +13,6 @@ App.QuotaIndexRoute = Ember.Route.extend({
 //  },
   redirect:function () {
     console.log("transitionTo quota.integrity");
-    this.transitionTo('quota.integrity');
+   // this.transitionTo('quota.integrity');
   }
 });
