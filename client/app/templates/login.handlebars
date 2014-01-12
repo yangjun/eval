@@ -1,32 +1,32 @@
-<form class="form-horizontal">
-    <div class="control-group">
+<form class="form-horizontal" role="form">
+    <div class="form-group">
         <legend>
           {{t login.title}}
         </legend>
     </div>
 
-    <div class="control-group">
-        <label class="control-label" for="username">{{t login.username.title}}</label>
-        <div class="controls">
-          {{view Ember.TextField id="username" value=username type="text" placeholderTranslation="login.username.placeholder"}}
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="username">{{t login.username.title}}</label>
+        <div class="col-sm-6">
+          {{view Ember.TextField id="username" class="form-control" value=username type="text" placeholderTranslation="login.username.placeholder"}}
         </div>
     </div>
 
-    <div class="control-group">
-        <label class="control-label" for="password">{{t login.password.title}}</label>
-        <div class="controls">
-          {{view Ember.TextField id="password" value=password type="password" placeholderTranslation="login.password.placeholder"}}
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="password">{{t login.password.title}}</label>
+        <div class="col-sm-6">
+          {{view Ember.TextField id="password"  class="form-control" value=password type="password" placeholderTranslation="login.password.placeholder"}}
         </div>
     </div>
 
-    <div class="control-group">
-        <div class="controls">
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-6">
             <button class="btn btn-link" {{action 'login'}} {{translateAttr title="login.button.title"}}>
                 <i class="fa fa-sign-in fa-2x"></i>
             </button>
-          {{#if isLoad}}
+            {{#if isLoad}}
               <i class="fa icon-spinner icon-spin fa-1x"></i>{{t app.loading.title}}
-          {{/if}}
+            {{/if}}
         </div>
     </div>
 </form>
