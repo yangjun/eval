@@ -10,9 +10,16 @@ App.QuotaIntegrityRoute = Ember.Route.extend({
   model: function(params) {
     var self = this;
     var controller = self.controllerFor('quotaIntegrity');
+    var quotas = [];
+	
     return App.Quota.quotaIntegrity().then(function (data) {
       var value = Em.Object.create(data);
-      return value;
+     
+      data.item.forEach(function(quota) {
+				var model = App.Quota.create(quota);
+				quotas.addObject(model);
+			})
+      return quotas;
     });
   },
 

@@ -1,5 +1,5 @@
 <div class="row">
- <legend><h1 class="text-center">{{model.title}}</h1></legend>
+ <legend><h1 class="text-center">完整性指标管理</h1></legend>
 
 
 
@@ -20,35 +20,43 @@
      </div>
 
      <div class="col-md-2">
-      <button type="button" class="btn btn-primary"> 保存</button>
+      <button type="button" class="btn btn-primary">保存</button>
                     </div>
     </div> 
     <legend></legend>
     
 
 
-     <table class="table table-hover">
-		<thead>
-		    <tr>
-		     <th>   </th>
+    
+   
+ <table class="table table-hover">
+
+                <thead>
+                <tr>
+                    <th>   </th>
 		      <th>属性</th>
 		      <th>资源类型</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <tr>
-		     <td><input type="checkbox"></td>
-		      <td>区域名称</td>
-		      <td>区域</td>
-		    </tr>
-		     <tr>
-		     <td><input type="checkbox"></td>
-		      <td>区域编码</td>
-		      <td>区域</td>
-		    </tr>
-		  </tbody>
-    </table>
-   
+                </tr>
+                </thead>
+                <tbody>
+                  {{#each item in content}}
+                  <form class="form-horizontal">
+                  
+                       <tr>
+                          
+                          <td><input type="checkbox"></td>
+					      <td>{{item.name}}</td>
+					      <td>{{item.type}}</td>
+
+                      </tr>
+                      </from>
+                  {{/each}}
+                </tbody>
+            </table>
+            
+            
+
+
 
     </div>
 </div>
