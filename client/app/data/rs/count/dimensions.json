@@ -9,5 +9,14 @@
       "background-color":"red",
       "alpha":0.7
     }
+  ],
+   "items":[
+  {"index":"1","name":"区域","type":"99"},
+  {"index":"2","name":"站点","type":"62"},
+  {"index":"3","name":"机房","type":"53"},
+  {"index":"4","name":"机架","type":"30"},
+  {"index":"5","name":"网元","type":"69"},
+  {"index":"6","name":"光缆","type":"79"},
+  {"index":"7","name":"传输段","type":"89"}
   ]
 }

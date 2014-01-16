@@ -30,8 +30,35 @@
 		</select>
      </div>
     </div>
-    <legend></legend>
+
     <!--雷达图-->
         {{vbar-chart height=400 content=model}}
+        
+        <legend>   </legend>
+		<p>详细信息</p> 
+      <table class="table table-hover">
+
+                <thead>
+                <tr>
+	              <th>序号</th>
+			      <th>维度</th>
+			      <th>分值</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {{#each item in items}}
+                  <form class="form-horizontal">
+                  
+                       <tr>
+                          
+                          <td>{{item.index}}</td>
+					      <td>{{item.name}}</td>
+					      <td>{{item.type}}</td>
+
+                      </tr>
+                      </from>
+                  {{/each}}
+                </tbody>
+            </table>
     </div>
 </div>
