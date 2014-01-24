@@ -5,8 +5,8 @@
  */
 package com.eu.evaluation.model;
 
+import com.eu.evaluation.anno.Dictinary;
 import com.eu.evaluation.model.eva.history.EvaluateVersion;
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.JoinColumn;
@@ -20,18 +20,20 @@ import javax.persistence.Version;
  * @author dell
  */
 @MappedSuperclass
-public class EvaluatedData implements Serializable {
+public class EvaluatedData implements IBaseEntity {
 
     private static final long serialVersionUID = 8711629870623528792L;
     private EvaluatedDataPK pk;
     private String id;
+    private String position;
     private EvaluateVersion evaluateVersion;
 
-    private int optlock;
+    private int optlock = 0;
 
     private EntityEnum entityType = EntityEnum.UNKNOWN;
 
     @Column(name = "id", insertable = false , updatable = false)
+    @Dictinary(displayname = "ID" , visible = false)
     public String getId() {
         return id;
     }
@@ -60,6 +62,7 @@ public class EvaluatedData implements Serializable {
 
     @Version
     @Column(name = "optlock")
+    @Dictinary(displayname = "optlock" , visible = false)
     public int getOptlock() {
         return optlock;
     }
@@ -78,4 +81,15 @@ public class EvaluatedData implements Serializable {
         this.evaluateVersion = evaluateVersion;
     }
 
+    @Column(name = "position", insertable = false , updatable = false)
+    @Dictinary(displayname = "position" , visible = false)
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    
 }

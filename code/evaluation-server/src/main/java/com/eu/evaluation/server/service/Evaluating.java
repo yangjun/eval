@@ -9,6 +9,7 @@ package com.eu.evaluation.server.service;
 import com.eu.evaluation.model.BaseEntity;
 import com.eu.evaluation.model.eva.EvaluateItem;
 import com.eu.evaluation.model.eva.history.EvaluateItemHistory;
+import com.eu.evaluation.model.sys.AccessSystem;
 
 /**
  * 评测逻辑接口
@@ -24,7 +25,7 @@ public interface Evaluating<T extends EvaluateItem , V extends EvaluateItemHisto
      * @return 评测是否通过
      * @throws Exception 
      */
-    public boolean evaluate(String evaluateItemHistoryID , String instanceClass , int instanceType , String instanceID) throws Exception;
+    public boolean evaluate(String evaluateItemHistoryID , AccessSystem accessSystem , String instanceClass , int instanceType , String instanceID) throws Exception;
     
     /**
      * 评测不通过时组合描述信息

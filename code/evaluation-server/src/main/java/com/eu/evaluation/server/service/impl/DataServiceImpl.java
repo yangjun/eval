@@ -7,6 +7,7 @@ package com.eu.evaluation.server.service.impl;
 
 import com.eu.evaluation.model.dictionary.ObjectDictionary;
 import com.eu.evaluation.model.eva.history.EvaluateVersion;
+import com.eu.evaluation.model.sys.AccessSystem;
 import com.eu.evaluation.server.dao.DefaultDAO;
 import com.eu.evaluation.server.dao.dictionary.FieldDictionaryDAO;
 import com.eu.evaluation.server.dao.dictionary.ObjectDictionaryDAO;
@@ -38,10 +39,12 @@ public class DataServiceImpl implements DataService {
     @Autowired
     private DefaultDAO defaultDAO;
 
-    public void copyData(EvaluateVersion ev) {
+    public void copyData(EvaluateVersion ev , AccessSystem system) {
         List<ObjectDictionary> ods = objectDictionaryDAO.findAndOrder();
 
-        String sqlTemp = "insert into {0} ( {1} ) select {2} , ''{3}'' from {4} o where not exists (select 1 from {5} t where t.id = o.id and t.evaluateVersion_id = :evid)";
+        String sqlTemp = "insert into {0} ( {1} ) select {2} , ''{3}'' from {4} o "
+                + "where o.position = :position "
+                + "and not exists (select 1 from {5} t where t.id = o.id and t.evaluateVersion_id = :evid and t.position = :position)";
         for (ObjectDictionary od : ods) {
             List<String> fds = fieldDictionaryDAO.findByObject(od.getId());
             String orgFieldStr = StringUtils.arrayToCommaDelimitedString(fds.toArray(new String[]{}));
@@ -56,6 +59,7 @@ public class DataServiceImpl implements DataService {
             logger.debug("复制被评数据sql：" + sql);
             
             MapSqlParameterSource params = new MapSqlParameterSource("evid", ev.getId());
+            params.addValue("position", system.getCode());
             defaultDAO.executeNativeInsert(sql, params);
         }
     }

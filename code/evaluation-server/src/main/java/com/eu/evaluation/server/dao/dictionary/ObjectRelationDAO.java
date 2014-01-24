@@ -9,6 +9,7 @@ package com.eu.evaluation.server.dao.dictionary;
 import com.eu.evaluation.model.dictionary.ObjectRelation;
 import com.eu.evaluation.server.dao.AbstractDAO;
 import java.util.List;
+import javax.persistence.NoResultException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
@@ -25,17 +26,17 @@ public class ObjectRelationDAO extends AbstractDAO<ObjectRelation>{
      * @param parentClassID
      * @return 
      */
-    public ObjectRelation findByParent(String selfClassID , String parentClassID){
-        String jpql = "select t from ObjectRelation t where t.self.id = :selfID and t.parent.id = :parentID";
-        MapSqlParameterSource params = new MapSqlParameterSource("selfID" , selfClassID);
-        params.addValue("parentID", parentClassID);
+    public ObjectRelation findByParent(String selfClass , String relationClass){
+        String jpql = "select t from ObjectRelation t where t.selfClass = :selfClass and t.relationClass = :relationClass";
+        MapSqlParameterSource params = new MapSqlParameterSource("selfClass" , selfClass);
+        params.addValue("relationClass", relationClass);
         List<ObjectRelation> result = this.query(jpql , params);
         if (result.isEmpty()){
             return null;
         }else if (result.size() == 1){
             return result.get(0);
         }else{
-            throw new RuntimeException("对象关系配置错误！本体ID = " + selfClassID + " ; 父级ID = " + parentClassID + "的对象关系只应该有一条，但数据库中存在多条！");
+            throw new RuntimeException("对象关系配置错误！本体 = " + selfClass + " ; 父级 = " + selfClass + "的对象关系只应该有一条，但数据库中存在多条！");
         }
     }
     
@@ -44,9 +45,15 @@ public class ObjectRelationDAO extends AbstractDAO<ObjectRelation>{
      * @param selfClassID
      * @return 
      */
-    public List<ObjectRelation> findChild(String selfClassID){
-        String jpql = "select t from ObjectRelation t where t.parent.id = :slefID";
-        MapSqlParameterSource params = new MapSqlParameterSource("slefID", selfClassID);
+    public List<ObjectRelation> findChild(String selfClass){
+        String jpql = "select t from ObjectRelation t where t.relationClass = :relationClass";
+        MapSqlParameterSource params = new MapSqlParameterSource("relationClass", selfClass);
         return this.query(jpql, params);
     }
+    
+    public int removeAll(){
+        String jpql = "delete from ObjectRelation t";
+        return this.createQuery(jpql, null).executeUpdate();
+    }
+    
 }

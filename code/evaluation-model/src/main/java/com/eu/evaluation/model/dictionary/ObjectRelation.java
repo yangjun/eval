@@ -7,6 +7,7 @@
 package com.eu.evaluation.model.dictionary;
 
 import com.eu.evaluation.model.BaseEntity;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -22,40 +23,48 @@ import javax.persistence.Table;
 public class ObjectRelation extends BaseEntity{
     private static final long serialVersionUID = 2118876504346430675L;
     
-    private ObjectDictionary self;//自身
+    private String selfClass;//自身
     
-    private FieldDictionary relationField;//关联字段
+    private String propertyName;//关联字段
     
-    private ObjectDictionary parent;//关联到的父对象
+    private String relationClass;//关联到的对象
+    
+    private boolean simpleProperty;//关联字段propertyName是否是简单类型
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="self_id" , referencedColumnName = "id")
-    public ObjectDictionary getSelf() {
-        return self;
+    @Column(name = "selfClass")
+    public String getSelfClass() {
+        return selfClass;
     }
 
-    public void setSelf(ObjectDictionary self) {
-        this.self = self;
+    public void setSelfClass(String selfClass) {
+        this.selfClass = selfClass;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="parent_id" , referencedColumnName = "id")
-    public ObjectDictionary getParent() {
-        return parent;
+    @Column(name = "propertyName")
+    public String getPropertyName() {
+        return propertyName;
     }
 
-    public void setParent(ObjectDictionary parent) {
-        this.parent = parent;
+    public void setPropertyName(String propertyName) {
+        this.propertyName = propertyName;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="relationField_id" , referencedColumnName = "id")
-    public FieldDictionary getRelationField() {
-        return relationField;
+    @Column(name = "relationClass")
+    public String getRelationClass() {
+        return relationClass;
     }
 
-    public void setRelationField(FieldDictionary relationField) {
-        this.relationField = relationField;
+    public void setRelationClass(String relationClass) {
+        this.relationClass = relationClass;
+    }
+
+    @Column(name = "simpleProperty")
+    public boolean isSimpleProperty() {
+        return simpleProperty;
+    }
+
+    public void setSimpleProperty(boolean simpleProperty) {
+        this.simpleProperty = simpleProperty;
     }
     
     

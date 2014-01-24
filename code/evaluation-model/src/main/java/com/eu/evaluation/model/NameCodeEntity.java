@@ -14,7 +14,7 @@ import javax.persistence.MappedSuperclass;
  * @author dell
  */
 @MappedSuperclass
-public class NameCodeEntity extends NameEntity{
+public class NameCodeEntity extends NameEntity implements INameCodeEntity{
     private static final long serialVersionUID = 6088579298970256906L;
     private String code;
 

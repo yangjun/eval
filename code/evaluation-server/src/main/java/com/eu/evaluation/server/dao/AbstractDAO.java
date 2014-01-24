@@ -261,7 +261,8 @@ public class AbstractDAO<T extends BaseEntity> {
             }
         }
         long end = System.currentTimeMillis();
-        logger.debug("批量保存耗时：（" + (end - start) + ") --- " + ((end - start)/1000/60) + "分" + ((end - start) / 1000 % 60) + "秒");
+        long millisecond = end - start;
+        logger.debug("批量保存" + entitys.size() + "条数据耗时：" + millisecond/1000/3600 + "小时 " + (millisecond/1000/60) + "分" + (millisecond / 1000 % 60) + "秒" + millisecond + "毫秒");
         return entitys;
     }
 
@@ -279,15 +280,16 @@ public class AbstractDAO<T extends BaseEntity> {
             remove(en);
         }
         long end = System.currentTimeMillis();
-        logger.debug("List批量删除耗时：（" + (end - start) + ") --- " + ((end - start)/1000/60) + "分" + ((end - start) / 1000 % 60) + "秒");
+        logger.debug("List批量删除耗时：（" + (end - start)/1000/3600 + "小时 " + ((end - start)/1000/60) + "分" + ((end - start) / 1000 % 60) + "秒");
     }
     
-    public void remove(String jpql, MapSqlParameterSource params){
+    public int remove(String jpql, MapSqlParameterSource params){
         long start = System.currentTimeMillis();
         Query query = createQuery(jpql, params);
-        query.executeUpdate();
+        int result = query.executeUpdate();
         long end = System.currentTimeMillis();
-        logger.debug("JPQL批量删除耗时：（" + (end - start) + ") --- " + ((end - start)/1000/60) + "分" + ((end - start) / 1000 % 60) + "秒");
+        logger.debug("JPQL批量删除耗时：（" + (end - start)/1000/3600 + "小时 " + ((end - start)/1000/60) + "分" + ((end - start) / 1000 % 60) + "秒");
+        return result;
     }
 
 //    public String toUTF8(String str) {

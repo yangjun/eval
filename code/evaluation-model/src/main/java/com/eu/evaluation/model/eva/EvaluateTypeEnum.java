@@ -22,15 +22,15 @@ public enum EvaluateTypeEnum {
     
     private String name;
     
-    private int index;
+    private int type;
     
     private Class evaClass;
     
     private Class evaHistoryClass;
     
-    private EvaluateTypeEnum(String name , int index , Class evaClass , Class evaHistoryClass){
+    private EvaluateTypeEnum(String name , int type , Class evaClass , Class evaHistoryClass){
         this.name = name;
-        this.index = index;
+        this.type = type;
         this.evaClass = evaClass;
         this.evaHistoryClass = evaHistoryClass;
     }
@@ -39,6 +39,15 @@ public enum EvaluateTypeEnum {
         for (EvaluateTypeEnum c : EvaluateTypeEnum.values()) {  
             if (c.getIndex() == index) {  
                 return c.name;  
+            }  
+        }  
+        return null;  
+    }  
+    
+    public static EvaluateTypeEnum getByType(int type) {  
+        for (EvaluateTypeEnum c : EvaluateTypeEnum.values()) {  
+            if (c.getIndex() == type) {  
+                return c;  
             }  
         }  
         return null;  
@@ -61,10 +70,10 @@ public enum EvaluateTypeEnum {
         this.name = name;  
     }  
     public int getIndex() {  
-        return index;  
+        return type;  
     }  
     public void setIndex(int index) {  
-        this.index = index;  
+        this.type = index;  
     }  
 
     public Class getEvaClass() {

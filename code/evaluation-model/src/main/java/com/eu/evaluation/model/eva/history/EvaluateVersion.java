@@ -6,9 +6,13 @@
 package com.eu.evaluation.model.eva.history;
 
 import com.eu.evaluation.model.NameEntity;
+import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -31,6 +35,8 @@ public class EvaluateVersion extends NameEntity {
     public final static int STATUS_FINISHED = 5;//评测完成
 
     private int status = 0;//状态
+    
+    private Calendar createDate;
 
     @Column(name = "status")
     public int getStatus() {
@@ -41,4 +47,15 @@ public class EvaluateVersion extends NameEntity {
         this.status = status;
     }
 
+    @Column(name="createDate")
+    @Temporal(value = TemporalType.TIMESTAMP)
+    public Calendar getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Calendar createDate) {
+        this.createDate = createDate;
+    }
+
+    
 }

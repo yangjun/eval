@@ -21,6 +21,8 @@ public class EvaluatedDataPK implements Serializable{
     private String id;
     
     private String evaluateVersionId;
+    
+    private String position;
 
     @Column(name="id")
     public String getId() {
@@ -38,6 +40,15 @@ public class EvaluatedDataPK implements Serializable{
 
     public void setEvaluateVersionId(String evaluateVersion) {
         this.evaluateVersionId = evaluateVersion;
+    }
+
+    @Column(name="position")
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     @Override

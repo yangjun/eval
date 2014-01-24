@@ -31,7 +31,11 @@ public class FieldDictionary extends BaseEntity{
     
     private String displayname;//显示名称
     
-    private boolean visible;
+    private boolean visible = true;//是否可见。用于指标管理中，对用户因此一些不必须要的属性。如ID，optlock
+    
+    private boolean valid = true;//是否有效，数据字典不删除，只设置为是否有效
+    
+    private boolean simpleProperty = true;//propertyName对应的属性是否是一个简单类型（如String , Interger等）
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "objectDictionary_id" , referencedColumnName = "id")
@@ -77,6 +81,24 @@ public class FieldDictionary extends BaseEntity{
 
     public void setPropertyName(String propertyName) {
         this.propertyName = propertyName;
+    }
+
+    @Column(name="valid")
+    public boolean isValid() {
+        return valid;
+    }
+
+    public void setValid(boolean valid) {
+        this.valid = valid;
+    }
+
+    @Column(name="simpleProperty")
+    public boolean isSimpleProperty() {
+        return simpleProperty;
+    }
+
+    public void setSimpleProperty(boolean simpleProperty) {
+        this.simpleProperty = simpleProperty;
     }
     
     

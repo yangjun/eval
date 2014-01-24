@@ -7,11 +7,12 @@
 package com.eu.evaluation.server.service;
 
 import com.eu.evaluation.model.eva.history.EvaluateVersion;
+import com.eu.evaluation.model.sys.AccessSystem;
 
 /**
  *
  * @author dell
  */
 public interface DataService {
-    public void copyData(EvaluateVersion ev);
+    public void copyData(EvaluateVersion ev , AccessSystem system);
 }

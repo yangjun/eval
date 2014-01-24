@@ -28,7 +28,7 @@ public class ObjectDictionary extends BaseEntity{
     
     private String displayname;
     
-    private boolean visible;
+    private boolean valid;//是否有效，数据字典不删除，只设置为是否有效
     
     private int serial;//序号
 
@@ -77,13 +77,13 @@ public class ObjectDictionary extends BaseEntity{
         this.displayname = displayname;
     }
 
-    @Column(name="visible")
-    public boolean isVisible() {
-        return visible;
+    @Column(name="valid")
+    public boolean isValid() {
+        return valid;
     }
 
-    public void setVisible(boolean visible) {
-        this.visible = visible;
+    public void setValid(boolean valid) {
+        this.valid = valid;
     }
     
     

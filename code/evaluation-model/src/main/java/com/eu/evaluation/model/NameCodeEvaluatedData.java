@@ -6,6 +6,7 @@
 
 package com.eu.evaluation.model;
 
+import com.eu.evaluation.anno.Dictinary;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
@@ -19,6 +20,7 @@ public class NameCodeEvaluatedData extends NameEvaluatedData{
     private String code;
 
     @Column(name = "code")
+    @Dictinary(displayname = "编码")
     public String getCode() {
         return code;
     }
