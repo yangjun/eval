@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <context:component-scan base-package="com.eu.evaluate.web.controller"/>
+    
+    <!--普通web页面解析器-->
+    <bean id="internalResourceViewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/pages/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="order" value="100"/>
+    </bean>
+    
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters" ref = "messageConverters"/>
+        <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+    </bean>
+    
+    <bean class= "org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+        <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+        <property name="interceptors">
+            <list>
+                <!--开启entityManager的拦截，使web层可以访问延迟加载的数据-->
+                <bean class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">
+                    <property name="entityManagerFactory" ref="entityManagerFactory"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    
+    
+    
+    <!--内容协商解析器，以扩展名形式返回指定格式的数据-->
+    <bean
+        class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="contentNegotiationManager" ref="contentNegotiationManager"></property>
+        <property name="order" value="0"></property>
+        <!-- <property name="viewResolvers"> <list> <ref bean="internalResourceViewResolver"/> 
+        <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" /> 
+        </list> </property> -->
+        <property name="defaultViews">
+            <list>
+                <bean
+                    class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+                    <property name="extractValueFromSingleKeyModel" value="true"></property>
+                    <!--
+                    <property name="modelKeys">ModelAndView中，包含以下Key的属性才会转换为JSON
+                        <set>
+                            <value>rows</value>
+                            <value>total</value>
+                            <value>datas</value>
+                            <value>exception</value>
+                            <value>errorMsg</value>
+                        </set>
+                    </property>
+                    -->
+                    <!--空值不返回到JSON字符串中-->
+                    <property name="objectMapper">
+                        <bean class="org.codehaus.jackson.map.ObjectMapper">
+                            
+                            <property name="serializationConfig.serializationInclusion">
+                                <value
+                                    type="org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion">NON_NULL
+                                </value>
+                            </property>
+                        </bean>
+                    </property>			
+                </bean>
+                <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+                    <property name="marshaller" ref="jaxb2Marshaller"></property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="contentNegotiationManager"
+          class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="defaultContentType" value="text/html"></property>
+        <property name="ignoreAcceptHeader" value="false"></property>
+        <property name="favorPathExtension" value="false"></property>
+        <property name="mediaTypes">
+            <props>
+                <prop key="json">application/json</prop>
+                <prop key="xml">application/xml</prop>
+                <prop key="html">text/html</prop>
+            </props>
+        </property>
+    </bean>
+    <!--
+    <mvc:annotation-driven />
+    -->
+    <mvc:default-servlet-handler/>
+    <mvc:resources mapping="/resources/**" location="/" />
+</beans>

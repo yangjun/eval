@@ -27,11 +27,11 @@ App.TypeAheadComponent = Ember.TextField.extend({
       prefetch: url,
       limit: 3,
       template: [
-        '<p class="repo-language">{{language}}</p>',
-        '<p class="repo-name">{{name}}</p>',
-        '<p class="repo-description">{{description}}</p>'
+        '<p>{{language}}</p>',
+        '<p>{{name}}</p>',
+        '<p>{{description}}</p>'
       ].join(''),
-      header: '<h3 class="league-name">language</h3>',
+      header: '<h4>language</h4>',
       engine: Hogan
     });
 
