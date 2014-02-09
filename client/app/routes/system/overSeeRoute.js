@@ -26,9 +26,9 @@ App.SystemOverseeRoute = Ember.Route.extend({
 
  setupController: function(controller, model) {
       controller.set('model', model);
-  }
+ },
 
-	actions : {
+ actions : {
 		error : function(reason) {
 			//console.log("error:" + reason);
 		},
