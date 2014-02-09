@@ -38,6 +38,7 @@ App.Router.map(function() {
 	});
 	
 	this.resource("system", function() {
+		this.route("oversee");
 		
 	});
 
