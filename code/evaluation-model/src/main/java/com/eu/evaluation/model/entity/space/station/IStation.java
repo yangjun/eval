@@ -6,13 +6,14 @@
 
 package com.eu.evaluation.model.entity.space.station;
 
+import com.eu.evaluation.model.IPositionEntity;
 import javax.persistence.Column;
 
 /**
  *
  * @author dell
  */
-public interface IStation {
+public interface IStation extends IPositionEntity{
 
     @Column(name = "address")
     String getAddress();

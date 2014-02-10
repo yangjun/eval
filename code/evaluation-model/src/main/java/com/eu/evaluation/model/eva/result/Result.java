@@ -7,6 +7,7 @@
 package com.eu.evaluation.model.eva.result;
 
 import com.eu.evaluation.model.BaseEntity;
+import com.eu.evaluation.model.PositionEntity;
 import com.eu.evaluation.model.eva.history.EvaluateItemHistory;
 import com.eu.evaluation.model.eva.history.EvaluateVersion;
 import java.util.Calendar;
@@ -25,7 +26,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="t_res_result")
-public class Result extends BaseEntity{
+public class Result extends PositionEntity{
     private static final long serialVersionUID = -8638419517310706654L;
     
     public final static int STATUS_UNEVALUATE = 0;//未评测

@@ -6,14 +6,14 @@
 
 package com.eu.evaluation.model.entity;
 
-import com.eu.evaluation.model.BaseEntity;
+import com.eu.evaluation.model.IPositionEntity;
 import java.util.List;
 
 /**
  *
  * @author dell
  */
-public interface ListResponse<T extends BaseEntity> {
+public interface ListResponse<T extends IPositionEntity> {
     
     public abstract List<T> getRows();
     

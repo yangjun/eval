@@ -6,11 +6,13 @@
 
 package com.eu.evaluation.model.entity.space.deviceRoom;
 
+import com.eu.evaluation.model.IPositionEntity;
+
 /**
  *
  * @author dell
  */
-public interface IDeviceRoom {
+public interface IDeviceRoom extends IPositionEntity{
 
     String getFloor();
 

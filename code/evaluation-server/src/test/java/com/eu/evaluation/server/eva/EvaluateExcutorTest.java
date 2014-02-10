@@ -29,9 +29,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  *
  * @author dell
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:application.xml", "classpath:databaseContext-jpa-all.xml" , "classpath:spring-mvc.xml"})
-public class EvaluateExcutorTest extends AbstractJUnit4SpringContextTests{
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = {"classpath:application.xml", "classpath:databaseContext-jpa-all.xml" , "classpath:spring-mvc.xml"})
+public class EvaluateExcutorTest /*extends AbstractJUnit4SpringContextTests*/{
     protected Log logger = LogFactory.getLog(getClass());
     @Autowired
     private EvaluateService evaluateService;

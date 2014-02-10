@@ -29,8 +29,6 @@ public class BaseEntity implements IBaseEntity , Serializable{
     private String id;
     
     private int optlock = 0;
-    
-    private String position;
 
     @Id
     @Override
@@ -53,17 +51,6 @@ public class BaseEntity implements IBaseEntity , Serializable{
     @Override
     public void setOptlock(int optlock) {
         this.optlock = optlock;
-    }
-
-    @Column(name="position")
-    @Override
-    public String getPosition() {
-        return position;
-    }
-
-    @Override
-    public void setPosition(String position) {
-        this.position = position;
     }
     
     

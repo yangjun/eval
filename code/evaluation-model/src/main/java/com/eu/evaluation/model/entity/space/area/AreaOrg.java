@@ -7,6 +7,7 @@ package com.eu.evaluation.model.entity.space.area;
 
 import com.eu.evaluation.model.BaseEntity;
 import com.eu.evaluation.model.NameCodeEntity;
+import com.eu.evaluation.model.NameCodePositionEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -19,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "t_spc_area_org")
 @XmlRootElement(name = "area")
-public class AreaOrg extends NameCodeEntity implements IArea {
+public class AreaOrg extends NameCodePositionEntity implements IArea {
 
     private static final long serialVersionUID = -4297557937021548197L;
     private String areaLevel;

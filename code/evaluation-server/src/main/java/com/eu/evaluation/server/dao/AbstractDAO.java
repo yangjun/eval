@@ -132,6 +132,10 @@ public class AbstractDAO<T extends BaseEntity> {
     public T get(String id) {
         return entityManager.find(entityClass, id);
     }
+    
+    public <V> V get(String id , Class<V> entityClass){
+        return entityManager.find(entityClass, id); 
+    }
 
     public List<T> query(String jpql) {
         return createQuery(jpql, null).getResultList();

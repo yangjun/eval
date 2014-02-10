@@ -6,6 +6,7 @@
 package com.eu.evaluation.model.entity.space.station;
 
 import com.eu.evaluation.model.NameCodeEntity;
+import com.eu.evaluation.model.NameCodePositionEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -20,8 +21,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "t_spc_station_org")
 @XmlRootElement
-public class StationOrg extends NameCodeEntity implements IStation {
-//、
+public class StationOrg extends NameCodePositionEntity implements IStation {
+    private static final long serialVersionUID = 8529770961373583961L;
 
     private String address;
     private String area;

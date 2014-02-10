@@ -26,9 +26,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  *
  * @author dell
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:application.xml", "classpath:databaseContext-jpa-all.xml" , "classpath:spring-mvc.xml"})
-public class EvaluateTemplateServiceImplTest extends AbstractJUnit4SpringContextTests {
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = {"classpath:application.xml", "classpath:databaseContext-jpa-all.xml" , "classpath:spring-mvc.xml"})
+public class EvaluateTemplateServiceImplTest /*extends AbstractJUnit4SpringContextTests*/ {
 
     @Autowired
     private EvaluateTemplateService templateService;

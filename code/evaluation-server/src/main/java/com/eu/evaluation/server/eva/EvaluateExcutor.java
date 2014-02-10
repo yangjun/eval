@@ -11,6 +11,7 @@ import com.eu.evaluation.model.eva.history.EvaluateItemHistory;
 import com.eu.evaluation.model.eva.history.EvaluateVersion;
 import com.eu.evaluation.model.eva.result.Result;
 import com.eu.evaluation.model.sys.AccessSystem;
+import com.eu.evaluation.server.ApplicationContext;
 import com.eu.evaluation.server.service.DataService;
 import com.eu.evaluation.server.service.EvaluateService;
 import com.eu.evaluation.server.service.Evaluating;
@@ -18,6 +19,8 @@ import com.eu.evaluation.server.service.ResultCollator;
 import com.eu.evaluation.server.service.SystemService;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +32,7 @@ import org.springframework.stereotype.Component;
  * @author dell
  */
 @Component
-public class EvaluateExcutor {
+public class EvaluateExcutor{
 
     protected Log logger = LogFactory.getLog(getClass());
 
@@ -41,6 +44,9 @@ public class EvaluateExcutor {
     
     @Autowired
     private SystemService systemService;
+    
+    @Autowired
+    private ApplicationContext applicationContext;
 
     
     /**
@@ -52,6 +58,13 @@ public class EvaluateExcutor {
      * @throws Exception 
      */
     public void execute(EvaluateVersion ev) throws InstantiationException, IllegalAccessException, Exception{
+        //验证当前状态，如果当前正在导入或评测中，则不处理
+        if (applicationContext.isEvaluating() || applicationContext.isImporting()) {
+            return;
+        } else {
+            applicationContext.setEvaluating(true);
+        }
+        
         logger.info("评测开始，本次评测版本：" + ev.getName());
         
         //复制评测项目到历史信息
@@ -73,6 +86,26 @@ public class EvaluateExcutor {
             rc.collate(ev);
         }
         logger.info("已完成整理评测结果，所有评测结束");
+        
+        applicationContext.setEvaluating(false);//评测完成，改变状态
+    }
+    
+    public void executeInThread(final EvaluateVersion ev){
+        Runnable runnable = new Runnable() {
+
+            public void run() {
+                try {
+                    execute(ev);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(EvaluateExcutor.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(EvaluateExcutor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
     
     /**
@@ -188,5 +221,7 @@ public class EvaluateExcutor {
         result.setCompletedDate(Calendar.getInstance());
         evaluateService.saveResult(result);
     }
+
+    
 
 }

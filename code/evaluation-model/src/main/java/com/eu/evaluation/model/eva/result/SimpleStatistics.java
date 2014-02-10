@@ -7,6 +7,7 @@
 package com.eu.evaluation.model.eva.result;
 
 import com.eu.evaluation.model.BaseEntity;
+import com.eu.evaluation.model.PositionEntity;
 import com.eu.evaluation.model.eva.EvaluateTypeEnum;
 import com.eu.evaluation.model.eva.history.EvaluateVersion;
 import javax.persistence.Column;
@@ -24,7 +25,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="t_res_SimpleStatistics")
-public class SimpleStatistics extends BaseEntity{
+public class SimpleStatistics extends PositionEntity{
     private static final long serialVersionUID = 7295573750771899784L;
     private EvaluateVersion evaluateVersion;
     

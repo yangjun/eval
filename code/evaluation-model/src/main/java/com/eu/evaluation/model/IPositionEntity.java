@@ -9,14 +9,9 @@ package com.eu.evaluation.model;
  *
  * @author dell
  */
-public interface IBaseEntity {
+public interface IPositionEntity {
 
-    public String getId();
+    public String getPosition();
 
-    public int getOptlock();
-
-    public void setId(String id);
-
-    public void setOptlock(int optlock);
-
+    public void setPosition(String position);
 }

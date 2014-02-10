@@ -19,7 +19,7 @@
                 http://www.springframework.org/schema/jee/spring-jee-2.0.xsd">
     
     <!--不采用独立的persistence.xml文件，将jpa信息配置在spring文件中-->
-    <context:property-placeholder location="classpath:jdbc.properties" file-encoding="UTF-8" />
+    <context:property-placeholder location="/WEB-INF/jdbc.properties" file-encoding="UTF-8" />
     
     <!--采用jndi方式配置数据源
     <jee:jndi-lookup id="dataSource" jndi-name="j2ee/dataSource">
@@ -49,7 +49,7 @@
         </property>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.show_sql">false</prop>
                 <prop key="hibernate.format_sql">true</prop>
@@ -64,7 +64,7 @@
     <bean id="persistenceProvider" class="org.hibernate.ejb.HibernatePersistence"></bean>
     <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"></bean>
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-        <property name="database" value="MYSQL"/>
+        <property name="database" value="${database}"/>
     </bean>
     
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

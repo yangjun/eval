@@ -11,10 +11,6 @@ import com.eu.evaluation.model.entity.space.station.Station;
 import com.eu.evaluation.model.EntityEnum;
 import com.eu.evaluation.model.NameCodeEvaluatedData;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 

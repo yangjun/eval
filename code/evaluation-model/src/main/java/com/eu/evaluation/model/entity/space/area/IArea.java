@@ -6,27 +6,23 @@
 
 package com.eu.evaluation.model.entity.space.area;
 
-import com.eu.evaluation.model.IBaseEntity;
+import com.eu.evaluation.model.IPositionEntity;
 
 /**
  *
  * @author dell
  */
-public interface IArea extends IBaseEntity{
+public interface IArea extends IPositionEntity{
 
     public String getAreaLevel();
 
     public String getCode();
 
     public String getParentId();
-    
-    public String getPosition();
 
     public void setAreaLevel(String areaLevel);
 
     public void setCode(String code);
 
     public void setParentId(String parentId);
-    
-    public void setPosition(String position);
 }

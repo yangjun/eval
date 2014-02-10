@@ -124,5 +124,11 @@
       <artifactId>jackson-jaxrs</artifactId>
       <version>1.9.13</version>
     </dependency>
+    <dependency>
+      <groupId>ojdbc</groupId>
+      <artifactId>ojdbc</artifactId>
+      <version>14</version>
+      <scope>runtime</scope>
+    </dependency>
   </dependencies>
 </project>

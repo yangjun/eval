@@ -4,29 +4,38 @@
  * and open the template in the editor.
  */
 
-package com.eu.evaluate.web.controller;
+package com.eu.evaluation.web.controller;
 
 import com.eu.evaluation.model.eva.EvaluateItem;
 import com.eu.evaluation.model.eva.EvaluateTypeEnum;
 import com.eu.evaluation.server.service.DictionaryService;
 import com.eu.evaluation.server.service.EvaluateService;
 import com.eu.evaluation.server.service.EvaluateTemplateService;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletRequest;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- *
+ * ∆¿≤‚÷∏±ÍController
  * @author dell
  */
 @Controller
-@RequestMapping(value="/rest/eva/item")
+@RequestMapping(value="/rest/evaluateItem")
 public class EvaluateItemController {
+    
+    protected Log logger = LogFactory.getLog(getClass());
     
     @Autowired
     public EvaluateService evaluateService;
@@ -45,7 +54,9 @@ public class EvaluateItemController {
      */
     @ResponseBody
     @RequestMapping(value="/evaluateItem/{evaluateType}/{instanceType}" , method = RequestMethod.GET)
-    public <T extends EvaluateItem> List<T> findEvaluateItem(int evaluateType , int instanceType){
+    public <T extends EvaluateItem> List<T> findEvaluateItem(@PathVariable("evaluateType")EvaluateTypeEnum evaluateType , 
+            @PathVariable("instanceType")int instanceType){
+        
         return evaluateTemplateService.findEvaluateItem(evaluateType, instanceType);
     }
     
@@ -58,11 +69,18 @@ public class EvaluateItemController {
      * @return 
      */
     @ResponseBody
-    @RequestMapping(value="/evaluateItem" , method = RequestMethod.POST)
-    public EvaluateItem saveEvaluateItem(@RequestParam(value = "evaluateType") int evaluateType , 
-            @RequestParam(value="objectDictionaryID") String objectDictionaryID , 
-            @RequestParam(value="fieldDictionaryID") String fieldDictionaryID , 
+    @RequestMapping(value="/evaluateItem" , method = RequestMethod.POST , consumes = {"application/json"})
+    public EvaluateItem saveEvaluateItem(@RequestParam("evaluateType") EvaluateTypeEnum evaluateType ,
+            @RequestParam("objectDictionaryID") String objectDictionaryID , 
+            @RequestParam("fieldDictionaryID") String fieldDictionaryID , 
             ServletRequest request){
-        return evaluateTemplateService.createOrReplaceEvaluateItem(EvaluateTypeEnum.getByType(evaluateType), objectDictionaryID, fieldDictionaryID, request.getParameterMap());
+        
+        
+        Map<String , Object> otherMap = new HashMap<String, Object>();
+        for(Object key : request.getParameterMap().keySet()){
+            otherMap.put((String) key, request.getParameter((String) key));
+        }
+        
+        return evaluateTemplateService.createOrReplaceEvaluateItem(EvaluateTypeEnum.NOT_NULL, objectDictionaryID, fieldDictionaryID,otherMap);
     }
 }

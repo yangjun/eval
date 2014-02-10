@@ -7,6 +7,7 @@
 package com.eu.evaluation.model.entity.space.deviceRoom;
 
 import com.eu.evaluation.model.NameCodeEntity;
+import com.eu.evaluation.model.NameCodePositionEntity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -20,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name="t_spc_deviceroom_org")
 @XmlRootElement(name="room")
-public class DeviceRoomOrg extends NameCodeEntity implements IDeviceRoom{
+public class DeviceRoomOrg extends NameCodePositionEntity implements IDeviceRoom{
     private static final long serialVersionUID = -3645436483923262736L;
     private String floor;
     

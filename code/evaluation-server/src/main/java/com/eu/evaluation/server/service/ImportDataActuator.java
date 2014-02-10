@@ -6,7 +6,7 @@
 
 package com.eu.evaluation.server.service;
 
-import com.eu.evaluation.model.BaseEntity;
+import com.eu.evaluation.model.IPositionEntity;
 import com.eu.evaluation.model.entity.ListResponse;
 import com.eu.evaluation.model.sys.AccessSystem;
 import com.eu.evaluation.model.sys.ImportDataConfig;
@@ -26,5 +26,5 @@ public interface ImportDataActuator {
      * @param config
      * @throws ClassNotFoundException 
      */
-    public <T extends ListResponse<V>, V extends BaseEntity> void importData(AccessSystem accessSystem , ImportDataConfig config)  throws ClassNotFoundException;
+    public <T extends ListResponse<V>, V extends IPositionEntity> void importData(AccessSystem accessSystem , ImportDataConfig config)  throws ClassNotFoundException;
 }

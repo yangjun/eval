@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.eu.evaluate.web.controller;
+package com.eu.evaluation.web.controller;
 
 import com.eu.evaluation.model.EntityEnum;
 import com.eu.evaluation.model.eva.EvaluateTypeEnum;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- *
+ * ÆÀ²â½á¹ûController
  * @author dell
  */
 @Controller

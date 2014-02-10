@@ -47,13 +47,13 @@ public class UpAndDownEvaluate implements Evaluating<UpAndDownEvlauateItem, UpAn
         UpAndDownEvlauateItemHistory ev = (UpAndDownEvlauateItemHistory) evaluateItemHistoryDAO.get(evaluateItemHistoryID);
         logger.debug(MessageFormat.format(debugInfo, new Object[]{"开始", accessSystem.getName(), ev.getObjectDictionary().getDisplayname(), instanceID}));
 
-        Long upCount = 0L;
+        Long upCount = 1L;
         if (ev.getUpEntity() != null) {//查找当前对象是否具有指定的父级对象
             upCount = countUp(ev, accessSystem, instanceID);
         }
 
-        Long downCount = 0L;
-        if (downCount == 0 && ev.getDownEntity() != null) {//查找当前资源是否具有指定的子集对象
+        Long downCount = 1L;
+        if (ev.getDownEntity() != null) {//查找当前资源是否具有指定的子集对象
             downCount = countDown(ev, accessSystem, instanceID);
         }
 

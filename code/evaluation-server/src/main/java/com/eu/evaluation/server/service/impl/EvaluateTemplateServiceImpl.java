@@ -83,7 +83,7 @@ public class EvaluateTemplateServiceImpl implements EvaluateTemplateService {
         return item;
     }
 
-    public <T extends EvaluateItem> List<T> findEvaluateItem(int evaluateType, int instanceType) {
-        return evaluateItemDAO.find(EvaluateTypeEnum.getByType(evaluateType), EntityEnum.getByInstanceType(instanceType));
+    public <T extends EvaluateItem> List<T> findEvaluateItem(EvaluateTypeEnum evaluateType, int instanceType) {
+        return evaluateItemDAO.find(evaluateType, EntityEnum.getByInstanceType(instanceType));
     }
 }

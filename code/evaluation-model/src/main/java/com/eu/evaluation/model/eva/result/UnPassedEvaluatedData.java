@@ -8,6 +8,7 @@ package com.eu.evaluation.model.eva.result;
 
 import com.eu.evaluation.model.BaseEntity;
 import com.eu.evaluation.model.EvaluatedData;
+import com.eu.evaluation.model.PositionEntity;
 import com.eu.evaluation.model.eva.EvaluateTypeEnum;
 import com.eu.evaluation.model.eva.history.EvaluateVersion;
 import javax.persistence.Column;
@@ -25,7 +26,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="t_res_unpassed_evaluated_data")
-public class UnPassedEvaluatedData extends BaseEntity{
+public class UnPassedEvaluatedData extends PositionEntity{
     private static final long serialVersionUID = 8090880743473028013L;
     private int instanceType;
     

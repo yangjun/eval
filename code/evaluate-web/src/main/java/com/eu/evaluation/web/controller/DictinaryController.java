@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.eu.evaluate.web.controller;
+package com.eu.evaluation.web.controller;
 
 import com.eu.evaluation.model.dictionary.FieldDictionary;
 import com.eu.evaluation.server.service.DictionaryService;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- *
+ * Êý¾Ý×ÖµäController
  * @author dell
  */
 @Component

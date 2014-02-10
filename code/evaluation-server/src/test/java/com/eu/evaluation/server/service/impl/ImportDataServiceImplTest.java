@@ -20,9 +20,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  *
  * @author dell
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:application.xml", "classpath:databaseContext-jpa-all.xml" , "classpath:spring-mvc.xml"})
-public class ImportDataServiceImplTest extends AbstractJUnit4SpringContextTests{
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = {"classpath:application.xml", "classpath:databaseContext-jpa-all.xml" , "classpath:spring-mvc.xml"})
+public class ImportDataServiceImplTest /*extends AbstractJUnit4SpringContextTests*/{
     
     @Autowired
     private ImportDataExcutor importDataExcutor;
@@ -40,8 +40,8 @@ public class ImportDataServiceImplTest extends AbstractJUnit4SpringContextTests{
      */
 //    @Test
     public void testImportData() throws Exception {
-        importDataExcutor.excute("GZ");
-        assertNotNull(logger);
+        importDataExcutor.excute();
+//        assertNotNull(logger);
     }
     
 }

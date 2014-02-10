@@ -28,24 +28,25 @@ public class UpAndDownEvaluateItemDAO extends AbstractDAO<UpAndDownEvlauateItem>
 
     public void buildEvaluateItem(UpAndDownEvlauateItem evaluateItem, EvaluateItemTemplate itemTemplate , Map<String, Object> otherMap) {
         evaluateItem.setEditable(true);
-        evaluateItem.setUpEntity((ObjectDictionary) otherMap.get(UpAndDownEvlauateItem.MAP_KEY_UP_ENTITY));
-        evaluateItem.setDownEntity((ObjectDictionary) otherMap.get(UpAndDownEvlauateItem.MAP_KEY_DOWN_ENTITY));
+        
+        evaluateItem.setUpEntity(getObjectDictionary((String) otherMap.get(UpAndDownEvlauateItem.MAP_KEY_UP_ENTITY)));
+        evaluateItem.setDownEntity(getObjectDictionary((String) otherMap.get(UpAndDownEvlauateItem.MAP_KEY_DOWN_ENTITY)));
     }
 
     public EvaluateItem findTheMatching(ObjectDictionary od, FieldDictionary fd , Map<String , Object> otherMap) {
         String jpql = "select t from UpAndDownEvlauateItem t where t.objectDictionary.id = :odID";
         MapSqlParameterSource params = new MapSqlParameterSource("odID", od.getId());
         
-        ObjectDictionary upEntity = (ObjectDictionary) otherMap.get(UpAndDownEvlauateItem.MAP_KEY_UP_ENTITY);
-        if (upEntity != null){
+        String upEntityID = (String)otherMap.get(UpAndDownEvlauateItem.MAP_KEY_UP_ENTITY);
+        if (upEntityID != null){
             jpql += " and t.upEntity.id = :upID";
-            params.addValue("upID", upEntity.getId());
+            params.addValue("upID", upEntityID);
         }
         
-        ObjectDictionary downEntity = (ObjectDictionary) otherMap.get(UpAndDownEvlauateItem.MAP_KEY_DOWN_ENTITY);
-        if (downEntity != null){
+        String downEntityID = (String)otherMap.get(UpAndDownEvlauateItem.MAP_KEY_DOWN_ENTITY);
+        if (downEntityID != null){
             jpql += " and t.downEntity.id = :downID";
-            params.addValue("downID", downEntity.getId());
+            params.addValue("downID", downEntityID);
         }
         
         List<UpAndDownEvlauateItem> result = this.query(jpql, params);
@@ -54,7 +55,17 @@ public class UpAndDownEvaluateItemDAO extends AbstractDAO<UpAndDownEvlauateItem>
         } else if (result.size() == 1) {
             return result.get(0);
         } else {
+            ObjectDictionary upEntity = getObjectDictionary(upEntityID);
+            ObjectDictionary downEntity = getObjectDictionary(downEntityID);
             throw new RuntimeException("为对象：" + fd.getObjectDictionary().getDisplayname() + " 定义了多条上下级关系评测。上级=" + (upEntity == null ? "null" : upEntity.getDisplayname()) + " ; 下级=" + (downEntity == null ? "null" : downEntity.getDisplayname()));
+        }
+    }
+    
+    private ObjectDictionary getObjectDictionary(String id){
+        try{
+            return this.get(id, ObjectDictionary.class);
+        }catch(IllegalArgumentException e){
+            return null;
         }
     }
     
