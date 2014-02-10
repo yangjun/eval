@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-App.QuotaIntegrityRoute = Ember.Route.extend({
+App.SystemOverseeRoute = Ember.Route.extend({
   model: function(params) {
     var self = this;
     var controller = self.controllerFor('quotaIntegrity');
@@ -26,10 +26,27 @@ App.QuotaIntegrityRoute = Ember.Route.extend({
 
  setupController: function(controller, model) {
       controller.set('model', model);
-  }
+ },
 
-//  redirect:function () {
-//    console.log("transitionTo count.overview");
-//    this.transitionTo('count.overview');
-//  }
+ actions : {
+		error : function(reason) {
+			//console.log("error:" + reason);
+		},
+
+		useradd : function() {
+			var self = this;
+			var controller = self.controllerFor('userAdd');
+			var user = controller.get("user");
+			//var data = controller.getProperties('name', 'password', 'nickname', 'email', 'mobilephone', 'telephone');
+			controller.set('isLoad', true);
+			user.add().then(function(data) {
+				controller.transitionToRoute("user");
+				controller.set('isLoad', false);
+			}, function(reason) {
+				controller.set('isError', reason);
+				controller.set('isLoad', false);
+			});
+
+		}
+	}
 });

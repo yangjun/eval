@@ -2,7 +2,7 @@
 
 
 
-<legend><h1 class="text-center">{{model.title}}</h1></legend>
+<legend><h3 class="text-center">{{model.title}}</h3></legend>
     <div class="col-md-12">
         <div class="row">
         
@@ -27,8 +27,35 @@
 		</select>
      </div>
     </div>
-    <legend></legend>
+
     <!--雷达图-->
-      {{hbar-chart height=500 content=model}}
+      {{hbar-chart height=400 content=model}}
+      
+      <legend>   </legend>
+		<p>详细信息</p> 
+      <table class="table table-hover">
+
+                <thead>
+                <tr>
+	              <th>序号</th>
+			      <th>资源</th>
+			      <th>分值</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {{#each item in items}}
+                  <form class="form-horizontal">
+                  
+                       <tr>
+                          
+                          <td>{{item.index}}</td>
+					      <td>{{item.name}}</td>
+					      <td>{{item.type}}</td>
+
+                      </tr>
+                      </from>
+                  {{/each}}
+                </tbody>
+            </table>
     </div>
 </div>

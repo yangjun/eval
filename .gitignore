@@ -4,7 +4,6 @@
 *.jar
 *.war
 *.ear
-<<<<<<< HEAD
 
 # grunt
 node_modules/
@@ -18,8 +17,7 @@ client/app/scripts/models.js
 client/app/scripts/routes.js
 client/app/scripts/templates.js
 client/app/scripts/views.js
-=======
+
 node_modules/
 /code/evaluation-model/target/
 /code/evaluation-server/target/
->>>>>>> 0335b86a34adf495f6c134ceebdb142b359ab5df
