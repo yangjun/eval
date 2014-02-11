@@ -6,6 +6,9 @@
 
 package com.eu.evaluate.utils;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 /**
  *
  * @author dell
@@ -26,5 +29,31 @@ public class StringUtils {
         String firstPart = tmp.substring(0 , 1);
         String lastPart = tmp.substring(1);
         return firstPart.toLowerCase() + lastPart;
+    }
+    
+    /**
+     * 格式化double
+     * @param value 需要格式化的值
+     * @param digits 需要保留的小数位数
+     * @param mode 保留方式
+     * @return 
+     */
+    public static String formatDouble(double value , int digits , RoundingMode mode){
+        //定义格式化模式，保留2位小数
+        DecimalFormat formater = new DecimalFormat();
+        formater.setMaximumFractionDigits(digits);
+        formater.setGroupingSize(0);
+        formater.setRoundingMode(mode);
+        
+        return formater.format(value);
+    }
+    
+    /**
+     * 保留2位小数，不进位
+     * @param value
+     * @return 
+     */
+    public static String formatDouble_2_floor(double value){
+        return formatDouble(value , 2 , RoundingMode.FLOOR);
     }
 }

@@ -5,14 +5,17 @@
  */
 package com.eu.evaluation.web.controller;
 
+import com.eu.evaluate.utils.StringUtils;
 import com.eu.evaluation.model.EntityEnum;
 import com.eu.evaluation.model.eva.EvaluateTypeEnum;
 import com.eu.evaluation.model.eva.history.EvaluateVersion;
 import com.eu.evaluation.model.eva.result.SimpleStatistics;
 import com.eu.evaluation.server.service.EvaluateService;
 import com.eu.evaluation.server.service.ResultService;
+import com.eu.evaluation.web.controller.pojo.StatisticsVO;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,30 +48,25 @@ public class ResultController {
      * @param evaluateVersionID
      * @param position
      * @param instanceType
-     * @return Map<评测维度名称 , 维度得分(满分100)>
+     * @return List<StatisticsVO>
      */
     @ResponseBody
-    @RequestMapping(value = "/unilateral/{evaluateVersionID}/{position}/{instanceType}", method = RequestMethod.GET)
-    public Map<String, String> unilateral(
+    @RequestMapping(value = "/unilateral/{position}/{evaluateVersionID}/{instanceType}", method = RequestMethod.GET)
+    public List<StatisticsVO> unilateral(
             @PathVariable("evaluateVersionID") String evaluateVersionID,
             @PathVariable("position") String position,
             @PathVariable("instanceType") int instanceType) {
 
-        //定义格式化模式，保留2位小数
-        DecimalFormat formater = new DecimalFormat();
-        formater.setMaximumFractionDigits(2);
-        formater.setGroupingSize(0);
-        formater.setRoundingMode(RoundingMode.FLOOR);
-
         evaluateVersionID = THE_LAST_EVALUATE_VERSION_ID.equals(evaluateVersionID) ? findTheLastEvaluateVersionID() : evaluateVersionID;
 
-        Map<String, String> mav = new HashMap<String, String>();
         List<SimpleStatistics> list = resultService.findSimpleStatistics(evaluateVersionID, position, EntityEnum.getByInstanceType(instanceType));
+        List<StatisticsVO> result = new ArrayList<StatisticsVO>();
         for (SimpleStatistics ss : list) {
             double persent = Double.valueOf(ss.getSuccessCount()) / Double.valueOf(ss.getTotal()) * 100;
-            mav.put(ss.getEvaluateTypeEnum().getName(), formater.format(persent));
+            StatisticsVO vo = new StatisticsVO(ss.getEvaluateTypeEnum().getName(), Double.valueOf(StringUtils.formatDouble_2_floor(persent)));
+            result.add(vo);
         }
-        return mav;
+        return result;
     }
 
     /**
@@ -77,29 +75,25 @@ public class ResultController {
      * @param evaluateVersionID
      * @param position
      * @param evaluateType
-     * @return Map<资源类型名称 , 得分(满分100)>
+     * @return List<StatisticsVO>
      */
     @ResponseBody
-    @RequestMapping(value = "/keepEvaluateType/{evaluateVersionID}/{position}/{evaluateType}", method = RequestMethod.GET)
-    public Map<String, String> keepEvaluateType(
+    @RequestMapping(value = "/keepEvaluateType/{position}/{evaluateVersionID}/{evaluateType}", method = RequestMethod.GET)
+    public List<StatisticsVO> keepEvaluateType(
             @PathVariable("evaluateVersionID") String evaluateVersionID,
             @PathVariable("position") String position,
             @PathVariable("evaluateType") int evaluateType) {
-
-        DecimalFormat formater = new DecimalFormat();
-        formater.setMaximumFractionDigits(2);
-        formater.setGroupingSize(0);
-        formater.setRoundingMode(RoundingMode.FLOOR);
-
+        
         evaluateVersionID = THE_LAST_EVALUATE_VERSION_ID.equals(evaluateVersionID) ? findTheLastEvaluateVersionID() : evaluateVersionID;
 
-        Map<String, String> mav = new HashMap<String, String>();
         List<SimpleStatistics> list = resultService.findSimpleStatistics(evaluateVersionID, position, EvaluateTypeEnum.getByType(evaluateType));
+        List<StatisticsVO> result = new ArrayList<StatisticsVO>();
         for (SimpleStatistics ss : list) {
             double persent = Double.valueOf(ss.getSuccessCount()) / Double.valueOf(ss.getTotal()) * 100;
-            mav.put(EntityEnum.getByInstanceType(ss.getInstanceType()).getName(), formater.format(persent));
+            StatisticsVO vo = new StatisticsVO(ss.getEvaluateTypeEnum().getName(), Double.valueOf(StringUtils.formatDouble_2_floor(persent)));
+            result.add(vo);
         }
-        return mav;
+        return result;
     }
 
     private String findTheLastEvaluateVersionID() {

@@ -6,9 +6,9 @@
 
 package com.eu.evaluation.server.dao;
 
+import com.eu.evaluate.utils.StringUtils;
 import com.eu.evaluation.model.BaseEntity;
 import com.eu.evaluation.model.PageData;
-import com.eu.server.utils.CommonUtils;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
@@ -219,7 +219,7 @@ public class AbstractDAO<T extends BaseEntity> {
                 }
             }
 
-            if (!CommonUtils.isBlank(entity.getId())) {
+            if (!StringUtils.isBlank(entity.getId())) {
                 predicate = cb.and(predicate, cb.notEqual(root.get("id"), entity.getId()));
             }
             criteriaQuery.where(predicate);
@@ -245,7 +245,7 @@ public class AbstractDAO<T extends BaseEntity> {
      * @return 
      */
     public T save(T entity) {
-        if (CommonUtils.isBlank(entity.getId())) {
+        if (StringUtils.isBlank(entity.getId())) {
             entityManager.persist(entity);
         } else {
             entity = entityManager.merge(entity);

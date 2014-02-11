@@ -13,7 +13,9 @@ import com.eu.evaluation.server.eva.EvaluateExcutor;
 import com.eu.evaluation.server.eva.ImportDataExcutor;
 import com.eu.evaluation.server.service.EvaluateService;
 import com.eu.evaluation.server.service.SystemService;
+import com.eu.evaluation.web.controller.pojo.EvaluateVersionVO;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,12 +57,19 @@ public class EvaluateControll {
      */
     @ResponseBody
     @RequestMapping(value = "/evaluateVersion", method = RequestMethod.GET)
-    public List<EvaluateVersion> findEvaluateVersion(@RequestParam(value = "name", required = false) String name,
+    public List<EvaluateVersionVO> findEvaluateVersion(@RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "startDate", required = false) Calendar startDate,
             @RequestParam(value = "endDate", required = false) Calendar endDate) {
         EvaluateVersion ev = new EvaluateVersion();
         ev.setName(name);
-        return evaluateService.findEvaluateVersion(ev, startDate, endDate);
+        List<EvaluateVersion> versions = evaluateService.findEvaluateVersion(ev, startDate, endDate);
+        
+        List<EvaluateVersionVO> result = new ArrayList<EvaluateVersionVO>();
+        for (EvaluateVersion evaluateVersion : versions) {
+            EvaluateVersionVO vo = EvaluateVersionVO.cloneWith(evaluateVersion);
+            result.add(vo);
+        }
+        return result;
     }
 
     /**

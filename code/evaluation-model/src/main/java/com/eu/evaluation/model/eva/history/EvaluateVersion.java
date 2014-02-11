@@ -36,7 +36,7 @@ public class EvaluateVersion extends NameEntity {
 
     private int status = 0;//状态
     
-    private Calendar createDate;
+    private Calendar createDate = Calendar.getInstance();
 
     @Column(name = "status")
     public int getStatus() {
