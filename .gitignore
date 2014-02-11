@@ -4,6 +4,20 @@
 *.jar
 *.war
 *.ear
+
+# grunt
+node_modules/
+.idea/
+.tmp/
+
+# emberjs
+client/app/scripts/components.js
+client/app/scripts/controllers.js
+client/app/scripts/models.js
+client/app/scripts/routes.js
+client/app/scripts/templates.js
+client/app/scripts/views.js
+
 node_modules/
 /code/evaluation-model/target/
 /code/evaluation-server/target/
