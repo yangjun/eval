@@ -46,10 +46,17 @@ App.QuotaIntegrityController = Ember.ObjectController.extend({
 		var self = this;
 		var entityID = self.get('selectedEntityEnum.key');
 		console.log(entityID);
-		return self.data;
+		//return self.data;
+		var entitys = [];
+		App.Quota.findFieldByResType(entityID).then(function(data) {
+			data.forEach(function(entity) {
+				var model = App.Quota.create(entity);
+				entitys.addObject(model);
 
-		// return App.Quota.findFieldByResType('c83b23c1-42c4-4948-8478-b0c02223f92f',
-		// 'GZ',entityID).then(function (data) {
+			})
+		});
+
+		return entitys;
 
 	}
-}); 
+});

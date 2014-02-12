@@ -27,10 +27,9 @@ App.TypeAheadComponent = Ember.TextField.extend({
       prefetch: url,
       limit: 3,
       template: [
-        '<p class="repo-name">{{name}}</p>',
-        '<p class="repo-description">{{description}}</p>'
+        '<p class="repo-name">{{name}}</p>'
       ].join(''),
-      header: '<h3 class="league-name">name</h3>',
+      header: '<h3 class="league-name">版本</h3>',
       engine: Hogan
     });
 
@@ -48,7 +47,7 @@ App.TypeAheadComponent = Ember.TextField.extend({
   },
 
   selectionObserver:function () {
-    return this.typeahead.val(this.get("selection.id"));
+    return this.typeahead.val(this.get("selection.name"));
   }.observes("selection"),
 
   willInsertElement:function () {

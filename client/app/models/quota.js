@@ -26,6 +26,11 @@ App.Quota.reopenClass({
     return App.Ajax.get(url);
   },
   
+  findFieldByResType : function (entityType) {
+    var url = 'rest/dictinary/fieldDictionary/'+entityType;
+    return App.Ajax.get(url);
+  },
+  
   /**
    * 单维度
    */

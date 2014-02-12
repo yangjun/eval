@@ -12,62 +12,103 @@ App.Count = Ember.Object.extend({
 });
 
 App.Count.reopenClass({
-  /**
-   * 总体质量
-   */
-  overview:function () {
-    var url = 'rest/evaluate/evaluateVersion';
-    // promise
-    return App.Ajax.get(url);
-  },
-  
-  /**
-   * 总体趋势
-   */
-  overtrend:function () {
-    //var url = 'rs/count/overtrend.json';
-    var url = 'rest/evaluate/evaluateVersion';
-    // promise
-    return App.Ajax.get(url);
-  },
-  
-  
-   /**
-   * 单资源
-   */
-  singleres:function () {
-    //var url = 'rs/count/singleres.json';
-    var url = 'rest/evaluate/evaluateVersion';
-    // promise
-    return App.Ajax.get(url);
-  },
-  
-  findSingleresById : function(evaluateVersionID,position,instanceType){
-  	
-  	
-  	
-  	 var url = '/rest/result/unilateral/evaluateVersionID/position/instanceType';
-    // promise
-    return App.Ajax.get(url);
-  },
-  
-  procsingleres: function(value) {
-  	//todo
-  	return null;
-  },
-  /**
-   * 单维度
-   */
-  dimensions:function () {
-    //var url = 'rs/count/dimensions.json';
-    var url = 'rest/evaluate/evaluateVersion';
-    // promise
-    return App.Ajax.get(url);
-  },
-  findEntityEnum:function () {
-  	var url = 'rest/basicData/entityEnum';
-    // promise
-    return App.Ajax.get(url);
-  }
-  
+	/**
+	 * 总体质量
+	 */
+
+	overview : function() {
+		var url = 'rest/evaluate/evaluateVersion';
+		return App.Ajax.get(url);
+
+	},
+
+	/**
+	 * 总体趋势
+	 */
+	overtrend : function() {
+		//var url = 'rs/count/overtrend.json';
+		var url = 'rest/evaluate/evaluateVersion';
+		// promise
+		return App.Ajax.get(url);
+	},
+
+	/**
+	 * 单资源
+	 */
+	singleres : function() {
+		//var url = 'rs/count/singleres.json';
+		var url = 'rest/evaluate/evaluateVersion';
+		// promise
+		return App.Ajax.get(url);
+	},
+
+	findSingleresById : function(position, evaluateVersionID, instanceType) {
+		var url = 'rest/result/unilateral/' + position + '/' + evaluateVersionID + '/' + instanceType;
+		return App.Ajax.get(url);
+
+	},
+
+	procsingleres : function(value) {
+		//todo
+		console.log("value =" + value)
+		var result = {};
+		result.title = "1111";
+		
+		//result.title = "123qwert";
+		var scale = [];
+		var series = [];
+		var values = [];
+		var items = [];
+		
+	//	value.forEach(function(entity) {
+	//		var model = App.Count.create(entity);
+
+	//		scale.addObject(entity.dimension);
+	//		values.addObject(entity.score);
+	//		var a = App.Count.create({});
+			
+	//		a.dimension = value[i].dimension
+	//		a.score = value[i].score
+	//		items.addObject(a);
+	//	});
+	
+		for (var i = 0; i < value.length; i++) {
+			scale.addObject(value[i].dimension);
+			values.addObject(value[i].score);
+			var row = {};
+			row.index = i
+			row.dimension = value[i].dimension
+			row.score = value[i].score
+			items.addObject(row);
+		}
+		
+		result.scale = scale;
+		var temp = {};
+		temp.values = values;
+		
+		temp["background-color"] = "red";
+		temp.alpha =  0.7;
+		
+		series.addObject(temp);
+		
+		result.series = series;
+		result.items = items;
+		
+		return result;
+		
+	}, 
+	/**
+	 * 单维度
+	 */
+	dimensions : function() {
+		//var url = 'rs/count/dimensions.json';
+		var url = 'rest/evaluate/evaluateVersion';
+		// promise
+		return App.Ajax.get(url);
+	},
+	findEntityEnum : function() {
+		var url = 'rest/basicData/entityEnum';
+		// promise
+		return App.Ajax.get(url);
+	}
 });
