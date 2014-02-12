@@ -51,7 +51,6 @@ App.Count.reopenClass({
 	},
 
 	procsingleres : function(value) {
-		//todo
 		console.log("value =" + value)
 		var result = {};
 		result.title = "单项资源总体质量";
@@ -59,19 +58,7 @@ App.Count.reopenClass({
 		var series = [];
 		var values = [];
 		var items = [];
-		
-	//	value.forEach(function(entity) {
-	//		var model = App.Count.create(entity);
 
-	//		scale.addObject(entity.dimension);
-	//		values.addObject(entity.score);
-	//		var a = App.Count.create({});
-			
-	//		a.dimension = value[i].dimension
-	//		a.score = value[i].score
-	//		items.addObject(a);
-	//	});
-	
 		for (var i = 0; i < value.length; i++) {
 			scale.push(value[i].dimension);
       var score = value[i].score;

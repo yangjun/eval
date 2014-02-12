@@ -64,5 +64,10 @@ App.VbarChartComponent = Ember.Component.extend({
       height:height,
       data:data
     });
+  },
+
+  contentObserver:function () {
+    this.draw();
   }.observes("content")
+
 })
