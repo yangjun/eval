@@ -1,10 +1,11 @@
 {
-  "title": "5",
+  "title": "完整性评测指标管理",
   
   "items":[
-  {"name":"区域简称","type":"区域"},
-  {"name":"区域编码","type":"区域"},
-  {"name":"区域类型","type":"区域"}
+     {"id":"11","name":"区域简称","type":"区域","ischeck":true},
+     {"id":"12","name":"区域编码","type":"区域","ischeck":false},
+     {"id":"13","name":"区域类型","type":"区域","ischeck":true},
+     {"id":"14","name":"区域名称","type":"区域","ischeck":false}
   ]
 
   

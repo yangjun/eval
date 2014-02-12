@@ -27,6 +27,7 @@ App.Quota.reopenClass({
   },
   
   findFieldByResType : function (entityType) {
+  	//var url = "../data/rs/quota/integrity.json";
     var url = 'rest/dictinary/fieldDictionary/'+entityType;
     return App.Ajax.get(url);
   },

@@ -17,8 +17,6 @@ App.Count.reopenClass({
 	 */
 
 	overview : function() {
-		//
-		// var url = 'rest/evaluate/evaluateVersion';
 		var url = "../data/rs/count/overview.json";
     return App.Ajax.get(url);
 
@@ -28,9 +26,7 @@ App.Count.reopenClass({
 	 * 总体趋势
 	 */
 	overtrend : function() {
-		//var url = 'rs/count/overtrend.json';
-		var url = 'rest/evaluate/evaluateVersion';
-		// promise
+		var url = "../data/rs/count/overtrend.json";
 		return App.Ajax.get(url);
 	},
 
@@ -38,9 +34,8 @@ App.Count.reopenClass({
 	 * 单资源
 	 */
 	singleres : function() {
-		//var url = 'rs/count/singleres.json';
+		
 		var url = 'rest/evaluate/evaluateVersion';
-		// promise
 		return App.Ajax.get(url);
 	},
 
@@ -77,7 +72,7 @@ App.Count.reopenClass({
       var score = value[i].score;
 			values.push(score);
 			var row = {};
-			row.index = i;
+			row.index = i+1;
 			row.dimension = value[i].dimension;
 			row.score = score;
 			items.addObject(row);
@@ -104,9 +99,7 @@ App.Count.reopenClass({
 	 * 单维度
 	 */
 	dimensions : function() {
-		//var url = 'rs/count/dimensions.json';
-		var url = 'rest/evaluate/evaluateVersion';
-		// promise
+		var url = "../data/rs/count/dimensions.json";
 		return App.Ajax.get(url);
 	},
 

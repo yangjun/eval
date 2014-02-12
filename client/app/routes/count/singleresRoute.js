@@ -7,27 +7,27 @@
  */
 
 App.CountSingleresRoute = Ember.Route.extend({
-  model: function(params) {
-    var self = this;
-    var controller = self.controllerFor('countSingleres');
-    var entitys = [];
+	model : function(params) {
+		var self = this;
+		var controller = self.controllerFor('countSingleres');
+		var entitys = [];
+		//version : {},
+		//entityID : {},
+		App.Count.findEntityEnum().then(function(data) {
+			data.forEach(function(entity) {
+				var model = App.Count.create(entity);
+				entitys.addObject(model);
+			})
+		});
+		return entitys;
+		
+	},
 
-    App.Count.findEntityEnum().then(function (data) {
-      data.forEach(function(entity) {
-		var model = App.Count.create(entity);		
-            	entitys.addObject(model);
-        	})
-           
-    });
-    return entitys;
-  },
-
- setupController: function(controller, model) {
-      controller.set('model', model);
-  }
-
-//  redirect:function () {
-//    console.log("transitionTo count.overview");
-//    this.transitionTo('count.overview');
-//  }
-});
+	setupController : function(controller, model) {
+		controller.set('model', model);
+	}
+	//  redirect:function () {
+	//    console.log("transitionTo count.overview");
+	//    this.transitionTo('count.overview');
+	//  }
+}); 

@@ -9,21 +9,24 @@
 App.CountSingleresController = Ember.ObjectController.extend({
 	selectedEntityEnum : {},
 	data : {},
-  version: {},
+	version : {},
+	entityID : {},
+	
 	selectedEntity : function() {
 		this.refresh1();
-    return this.get("data");
-	}.property('selectedEntityEnum','version'),
+		return this.get("data");
+	}.property('selectedEntityEnum', 'version'),
 
 	refresh1 : function() {
 		console.log("refresh ...");
 		var self = this;
-		var entityID = self.get('selectedEntityEnum.key');
+		//var entityID = self.get('selectedEntityEnum.key');
+		entityID = self.get('selectedEntityEnum.key');
 		console.log("entityID = " + entityID);
 		var result = App.Count.findSingleresById('GZ', self.get("version.id"), entityID);
-	  result.then(function(data) {
-      var model = App.Count.procsingleres(data);
-      self.set('data', model);
+		result.then(function(data) {
+			var model = App.Count.procsingleres(data);
+			self.set('data', model);
 		});
 	}
 });
