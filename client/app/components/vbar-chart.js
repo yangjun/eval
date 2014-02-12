@@ -28,7 +28,7 @@ App.VbarChartComponent = Ember.Component.extend({
         "background-color":"#FFFFFF"
       },
       plot:{
-        "bar-width":"16px",
+        "bar-width":"24px",
         "valueBox":{
           type:"all",
           placement:"top-in",
@@ -64,5 +64,5 @@ App.VbarChartComponent = Ember.Component.extend({
       height:height,
       data:data
     });
-  }
+  }.observes("content")
 })

@@ -17,8 +17,10 @@ App.Count.reopenClass({
 	 */
 
 	overview : function() {
-		var url = 'rest/evaluate/evaluateVersion';
-		return App.Ajax.get(url);
+		//
+		// var url = 'rest/evaluate/evaluateVersion';
+		var url = "../data/rs/count/overview.json";
+    return App.Ajax.get(url);
 
 	},
 
@@ -52,9 +54,7 @@ App.Count.reopenClass({
 		//todo
 		console.log("value =" + value)
 		var result = {};
-		result.title = "1111";
-		
-		//result.title = "123qwert";
+		result.title = "单项资源总体质量";
 		var scale = [];
 		var series = [];
 		var values = [];
@@ -73,12 +73,13 @@ App.Count.reopenClass({
 	//	});
 	
 		for (var i = 0; i < value.length; i++) {
-			scale.addObject(value[i].dimension);
-			values.addObject(value[i].score);
+			scale.push(value[i].dimension);
+      var score = value[i].score;
+			values.push(score);
 			var row = {};
-			row.index = i
-			row.dimension = value[i].dimension
-			row.score = value[i].score
+			row.index = i;
+			row.dimension = value[i].dimension;
+			row.score = score;
 			items.addObject(row);
 		}
 		
@@ -93,7 +94,9 @@ App.Count.reopenClass({
 		
 		result.series = series;
 		result.items = items;
-		
+
+		console.log("result = " + JSON.stringify(result));
+
 		return result;
 		
 	}, 
@@ -106,6 +109,7 @@ App.Count.reopenClass({
 		// promise
 		return App.Ajax.get(url);
 	},
+
 	findEntityEnum : function() {
 		var url = 'rest/basicData/entityEnum';
 		// promise
