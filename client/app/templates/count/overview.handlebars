@@ -1,0 +1,18 @@
+<div class="row">
+ <legend><h1 class="text-center">{{model.title}}</h1></legend>
+
+
+
+    <div class="col-md-12">
+     <div class="row">
+      <div class="col-md-2">
+        <p class="text-right">版本选择</p>
+      </div>
+      <div class="col-md-10">
+        {{type-ahead url='data/repos.json' template='' selection=item   placeholder='选择版本'}}
+      </div>
+    </div> 
+    <legend></legend>
+      {{radar-chart height=500 content=model}}
+    </div>
+</div>

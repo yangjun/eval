@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-2">				
+    <div class="btn-group-vertical">
+                <ul>
+                  {{#link-to "norm.index" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                          href="#">区域资源管理</a>{{/link-to}}
+                  {{#link-to "norm.index" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                          href="#">站点资源管理</a>{{/link-to}}
+                  {{#link-to "norm.index" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                          href="#">传输设备资源管理</a>{{/link-to}}
+                  {{#link-to "norm.index" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                          href="#">接入设备资源管理</a>{{/link-to}}
+                  {{#link-to "norm.index" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                          href="#">交换网设备管理</a>{{/link-to}}
+                  {{#link-to "norm.index" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                          href="#">数据网设备管理</a>{{/link-to}}
+                  {{#link-to "norm.index" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                          href="#">光缆资源管理</a>{{/link-to}}
+                  {{#link-to "norm.index" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                          href="#">业务电路资源管理</a>{{/link-to}}
+                </ul>
+            </div>
+    </div>
+    <div class="col-md-10">
+      {{outlet loading}}
+      {{outlet}}
+    </div>
+</div>
+

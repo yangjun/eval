@@ -1,0 +1,34 @@
+<div class="row">
+
+
+
+<legend><h1 class="text-center">{{model.title}}</h1></legend>
+    <div class="col-md-12">
+        <div class="row">
+        
+      <div class="col-md-2">
+        <p class="text-right">版本选择</p>
+      </div>
+      <div class="col-md-4">
+        {{type-ahead url='data/repos.json' template='' selection=item   placeholder='选择不同的版本'}}
+      </div>
+      
+      <div class="col-md-2">
+        <p class="text-right">维度</p>
+      </div>
+      <div class="col-md-4">
+	    <select class="form-control">
+		  <option>完整性</option>
+		  <option>规范性</option>
+		  <option>唯一性</option>
+		  <option>逻辑性</option>
+		  <option>准确性</option>
+		  <option>管理类</option>
+		</select>
+     </div>
+    </div>
+    <legend></legend>
+    <!--雷达图-->
+      {{hbar-chart height=500 content=model}}
+    </div>
+</div>

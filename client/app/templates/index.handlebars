@@ -1,0 +1,37 @@
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="bs-sidebar" role="complementary">
+            <ul class="nav bs-sidenav">
+                <li class="active">xxxxxxx
+                    <ul class="nav">
+                        <li class=" active">{{link-to "login" login}}</li>
+                        <li>{{link-to menu.title menu.id}}</li>
+                        <li>{{link-to menu.title menu.id}}</li>
+                        <li class=" active">{{link-to "login" login}}</li>
+                        <li class=" active">{{link-to "login" login}}</li>
+                    </ul>
+                </li>
+                <li>{{link-to "关于" "about"}}</li>
+                <li><a href="about">menu.title</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-10" role="main">
+        <div class="row">
+          {{render "map" map}}
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+              {{radar-chart height=300 content=data}}
+            </div>
+            <div class="col-md-4">
+              {{vbar-chart height=300 content=data1}}
+            </div>
+            <div class="col-md-4">
+              {{line-chart height=300 content=data2}}
+            </div>
+        </div>
+    </div>
+
+</div>
