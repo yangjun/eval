@@ -2,34 +2,20 @@ App.TypeAheadComponent = Ember.TextField.extend({
   didInsertElement:function () {
     this._super();
     var _this = this;
-
-//    if (!this.get("data")) {
-//      throw "No data property set";
-//    }
-
-//    if (jQuery.isFunction(this.get("data").then)) {
-//      this.get("data").then(function (data) {
-//        _this.initializeTypeahead(data);
-//      });
-//    } else {
-//      this.initializeTypeahead(this.get("data"));
-//    }
-
-//    }
-
     this.initializeTypeahead(this.get("url"), this.get('template'));
   },
 
   initializeTypeahead:function (url, template) {
     var _this = this;
     this.typeahead = this.$().typeahead({
-      name: 'twitter-oss',
+      name: _this.$().attr('id') || "typeahead",
       prefetch: url,
-      limit: 3,
+      remote: '../data/q?k=%QUERY',
+      limit: 5,
       template: [
-        '<p class="repo-name">{{name}}</p>'
+        '<p>{{name}}</p>'
       ].join(''),
-      header: '<h3 class="league-name">版本</h3>',
+      header: '<p>版本</p>',
       engine: Hogan
     });
 
@@ -43,11 +29,17 @@ App.TypeAheadComponent = Ember.TextField.extend({
 
     if (this.get("selection")) {
       this.typeahead.val(this.get("selection.name"));
+      this.set('value', this.get("selection.name"));
     }
   },
 
   selectionObserver:function () {
-    return this.typeahead.val(this.get("selection.name"));
+    var value = this.get("selection.name");
+    if (Em.isEmpty(value) === true) {
+      return this.typeahead.val('');
+    }
+    return this.typeahead.val(value);
+    this.set('value', value);
   }.observes("selection"),
 
   willInsertElement:function () {
