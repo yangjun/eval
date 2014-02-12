@@ -1,54 +1,53 @@
 <div class="row">
- <legend><h1 class="text-center">{{model.title}}</h1></legend>
+ <legend><h3 class="text-center">{{model.title}}</h3></legend>
 
 
 
 
     <div class="col-md-12">
      <div class="row">
-     
+      <div class="col-md-2">
+        <p class="text-right">资源类别</p>
+      </div>
      <div class="col-md-4">
-      <select class="form-control" placeholder='选择不同类别的资源'>  
-		  <option>区域</option>
-		  <option>站点</option>
-		  <option>机房</option>
-		  <option>机架</option>
-		  <option>网元</option>
-		  <option>光缆</option>
-		  <option>传输段</option>
-		</select>
+    
+     {{view Ember.Select id="entitys" 
+					  contentBinding="content"
+					  selectionBinding="selectedEntityEnum"  
+					  optionValuePath="content.key"  
+					  optionLabelPath="content.value" 
+					   }}
+     
+     
      </div>
 
-     <div class="col-md-2">
-      <button type="button" class="btn btn-primary"> 保存</button>
-                    </div>
     </div> 
-    <legend></legend>
+<p>   </p>
     
 
 
-     <table class="table table-hover">
-		<thead>
-		    <tr>
-		     <th>   </th>
-		      <th>属性</th>
-		      <th>资源类型</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <tr>
-		     <td><input type="checkbox"></td>
-		      <td>区域名称</td>
-		      <td>区域</td>
-		    </tr>
-		     <tr>
-		     <td><input type="checkbox"></td>
-		      <td>区域编码</td>
-		      <td>区域</td>
-		    </tr>
-		  </tbody>
-    </table>
+    
    
+ <table class="table table-hover">
+                <thead>
+                <tr>
+	              <th>   </th>
+			      <th>属性</th>
+			      <th>资源类型</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {{#each item in selectedEntity.items}}
+                  <form class="form-horizontal">
+                       <tr>
+                          <td> {{view Ember.Checkbox checkedBinding=item.ischeck }}</td>
+					      <td>{{item.name}}</td>
+					      <td>{{item.type}}</td>
+                      </tr>
+                      </from>
+                  {{/each}}
+                </tbody>
+            </table>
 
     </div>
 </div>

@@ -7,55 +7,49 @@
  */
 
 App.QuotaIntegrityController = Ember.ObjectController.extend({
-//  data: {
-//    title: "标题",
-//    scale: [
-//      "指标1","指标2","指标3","指标4","指标5","指标6"
-//    ],
-//    series: [
-//      {
-//        "values":[8,14,53,30,69,25],
-//        "background-color":"red",
-//        "alpha":0.7
-//      }
-//    ]
-//  },
-  data1: {
-    title: "唯一性指标地区排名",
-    scale: [
-      "地区3","地区5","地区1","地区6","地区5","地区4"
-    ],
-    series: [
-      {
-        "values":[8,14,30,68,75,198],
-        "background-color":"green",
-        "fill-angle":-90,
-        "text":"唯一性指标"
-      }
-    ]
-  },
-  data2: {
-    title: "XX地区趋势",
-    scale: [
-      "2013-01","2013-02","2013-03","2013-04","2013-05","2013-06"
-    ],
-    series: [
-      {
-        "values":[8,14,30,68,75,98],
-        "background-color":"green",
-        "fill-angle":-90,
-        "text":"唯一性指标"
-      },
-      {
-        "values":[18,35,42,35,17,35],
-        "background-color":"red",
-        "fill-angle":-90,
-        "text":"XX性指标"
-      }
-    ]
-  },
-  menu: {
-    title: "XXX",
-    id: "users"
-  }
-});
+
+	selectedEntityEnum : null,
+
+	data : {
+		"title" : "5",
+
+		"items" : [{
+			"id" : "1",
+			"name" : "区域名称",
+			"type" : "区域",
+			"ischeck" : true
+		}, {
+			"id" : "2",
+			"name" : "区域简称",
+			"type" : "区域",
+			"ischeck" : false
+		}, {
+			"id" : "3",
+			"name" : "区域编码",
+			"type" : "区域",
+			"ischeck" : true
+		}, {
+			"id" : "4",
+			"name" : "区域类型",
+			"type" : "区域",
+			"ischeck" : false
+		}]
+	},
+	selectedEntity : function() {
+
+		return this.refresh();
+	}.property('selectedEntityEnum'),
+
+	refresh : function() {
+
+		console.log("refresh ...");
+		var self = this;
+		var entityID = self.get('selectedEntityEnum.key');
+		console.log(entityID);
+		return self.data;
+
+		// return App.Quota.findFieldByResType('c83b23c1-42c4-4948-8478-b0c02223f92f',
+		// 'GZ',entityID).then(function (data) {
+
+	}
+}); 

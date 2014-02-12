@@ -9,6 +9,108 @@
   {{#link-to "count.overview" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
           href="#">规范性评测指标管理</a>{{/link-to}}
         
+        
+         <!--折叠开始-->
+        <div class="accordion" id="accordion2">
+         <!--1-->
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion2"
+                            href="#collapseOne">
+                        管理率评测指标管理
+                    </button>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div class="btn-group-vertical">
+                            <ul>
+                              {{#link-to "count.overview" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">通信站点管理率</a>{{/link-to}}
+                              {{#link-to 'count.dimensions' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">光缆资源管理率</a>{{/link-to}}
+                              {{#link-to 'count.singleres' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">传输设备管理率</a>{{/link-to}}
+                              {{#link-to 'count.singleres' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">交换网设备管理率</a>{{/link-to}}
+                              {{#link-to 'count.singleres' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">数据网设备管理率</a>{{/link-to}} 
+                              {{#link-to 'count.singleres' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">接入网设备管理率</a>{{/link-to}}
+                              {{#link-to 'count.singleres' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">生产实时控制业务管理率</a>{{/link-to}}       
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+              <!--2-->
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion2"
+                            href="#collapseTwo">
+                        逻辑校验评测指标管理
+                    </button>
+                </div>
+                <div id="collapseTwo" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div class="btn-group-vertical">
+                            <ul>{{#link-to 'count.overtrend' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#">传输段逻辑校验</a>{{/link-to}}</ul>
+                            <ul>{{#link-to 'count' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#">接入网链路使用电路</a>{{/link-to}}</ul>
+                            <ul>{{#link-to 'count' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#">交换中继使用电路或光路</a>{{/link-to}}</ul>
+                            <ul>{{#link-to 'count' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#">数据中继使用电路或光路</a>{{/link-to}}</ul>
+                            <ul>{{#link-to 'count' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#">光路物理配线</a>{{/link-to}}</ul>
+                            <ul>{{#link-to 'count' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#">传输电路物理配线</a>{{/link-to}}</ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <!--3-->
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion3"
+                            href="#collapseThree">
+                        准确性评测
+                    </button>
+                </div>
+                <div id="collapseThree" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div class="btn-group-vertical">
+                            <ul>
+                              {{#link-to "count.overview" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">站点</a>{{/link-to}}
+                              {{#link-to 'count.dimensions' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">设备</a>{{/link-to}}
+                              {{#link-to 'count.singleres' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">传输段关联光路</a>{{/link-to}}
+                              {{#link-to "count.overview" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">接入网关联传输电路</a>{{/link-to}}
+                              {{#link-to 'count.dimensions' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">交换中继使用传输电路</a>{{/link-to}}
+                              {{#link-to 'count.singleres' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">数据链路使用传输电路或光路</a>{{/link-to}}
+                              {{#link-to "count.overview" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">光路配线标签</a>{{/link-to}}
+                              {{#link-to 'count.dimensions' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
+                                      href="#">传输电路配线标签</a>{{/link-to}}
+                          
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--折叠结束-->
+        
     </div>
     <div class="col-md-10">
       {{outlet loading}}

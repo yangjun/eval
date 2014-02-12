@@ -18,5 +18,6 @@ App = Ember.Application.create({
   LOG_TRANSITIONS_INTERNAL: true, // detailed logging of all routing steps
 
   // web app base url
-  BASE_URL : 'data/'
+ // BASE_URL : 'data/'
+  BASE_URL : 'evaluate-web/'
 });

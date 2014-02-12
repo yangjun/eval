@@ -10,10 +10,16 @@ App.CountSingleresRoute = Ember.Route.extend({
   model: function(params) {
     var self = this;
     var controller = self.controllerFor('countSingleres');
-    return App.Count.singleres().then(function (data) {
-      var value = Em.Object.create(data);
-      return value;
+    var entitys = [];
+
+    App.Count.findEntityEnum().then(function (data) {
+      data.forEach(function(entity) {
+		var model = App.Count.create(entity);		
+            	entitys.addObject(model);
+        	})
+           
     });
+    return entitys;
   },
 
  setupController: function(controller, model) {

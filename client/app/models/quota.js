@@ -21,7 +21,7 @@ App.Quota.reopenClass({
   
    
    quotaIntegrity:function () {
-    var url = 'rs/quota/integrity.json';
+    var url = 'rest/evaluate/evaluateVersion';
     // promise
     return App.Ajax.get(url);
   },

@@ -16,7 +16,7 @@ App.Count.reopenClass({
    * 总体质量
    */
   overview:function () {
-    var url = 'rs/count/overview.json';
+    var url = 'rest/evaluate/evaluateVersion';
     // promise
     return App.Ajax.get(url);
   },
@@ -25,7 +25,8 @@ App.Count.reopenClass({
    * 总体趋势
    */
   overtrend:function () {
-    var url = 'rs/count/overtrend.json';
+    //var url = 'rs/count/overtrend.json';
+    var url = 'rest/evaluate/evaluateVersion';
     // promise
     return App.Ajax.get(url);
   },
@@ -35,16 +36,38 @@ App.Count.reopenClass({
    * 单资源
    */
   singleres:function () {
-    var url = 'rs/count/singleres.json';
+    //var url = 'rs/count/singleres.json';
+    var url = 'rest/evaluate/evaluateVersion';
     // promise
     return App.Ajax.get(url);
+  },
+  
+  findSingleresById : function(evaluateVersionID,position,instanceType){
+  	
+  	
+  	
+  	 var url = '/rest/result/unilateral/evaluateVersionID/position/instanceType';
+    // promise
+    return App.Ajax.get(url);
+  },
+  
+  procsingleres: function(value) {
+  	//todo
+  	return null;
   },
   /**
    * 单维度
    */
   dimensions:function () {
-    var url = 'rs/count/dimensions.json';
+    //var url = 'rs/count/dimensions.json';
+    var url = 'rest/evaluate/evaluateVersion';
+    // promise
+    return App.Ajax.get(url);
+  },
+  findEntityEnum:function () {
+  	var url = 'rest/basicData/entityEnum';
     // promise
     return App.Ajax.get(url);
   }
+  
 });

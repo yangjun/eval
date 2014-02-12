@@ -7,55 +7,48 @@
  */
 
 App.CountSingleresController = Ember.ObjectController.extend({
-//  data: {
-//    title: "标题",
-//    scale: [
-//      "指标1","指标2","指标3","指标4","指标5","指标6"
-//    ],
-//    series: [
-//      {
-//        "values":[8,14,53,30,69,25],
-//        "background-color":"red",
-//        "alpha":0.7
-//      }
-//    ]
-//  },
-  data1: {
-    title: "唯一性指标地区排名",
-    scale: [
-      "地区3","地区5","地区1","地区6","地区5","地区4"
-    ],
-    series: [
-      {
-        "values":[8,14,30,68,75,198],
-        "background-color":"green",
-        "fill-angle":-90,
-        "text":"唯一性指标"
-      }
-    ]
-  },
-  data2: {
-    title: "XX地区趋势",
-    scale: [
-      "2013-01","2013-02","2013-03","2013-04","2013-05","2013-06"
-    ],
-    series: [
-      {
-        "values":[8,14,30,68,75,98],
-        "background-color":"green",
-        "fill-angle":-90,
-        "text":"唯一性指标"
-      },
-      {
-        "values":[18,35,42,35,17,35],
-        "background-color":"red",
-        "fill-angle":-90,
-        "text":"XX性指标"
-      }
-    ]
-  },
-  menu: {
-    title: "XXX",
-    id: "users"
-  }
-});
+    
+	selectedEntityEnum : null,
+ 
+
+ data : {
+  "title": "4",
+  "scale": [
+    "完整性","规范性","唯一性","逻辑性","准确性","管理类"
+  ],
+  "series": [
+    {
+      "values":[8,14,53,30,69,25],
+      "background-color":"red",
+      "alpha":0.7
+    }
+  ],
+  
+  "items":[
+  {"index":"1","name":"完整性","type":"8"},
+  {"index":"2","name":"规范性","type":"14"},
+  {"index":"3","name":"唯一性","type":"53"},
+  {"index":"4","name":"逻辑性","type":"30"},
+  {"index":"5","name":"准确性","type":"69"},
+  {"index":"6","name":"管理类","type":"25"}
+  ]
+},
+	selectedEntity : function() {
+		
+		return this.refresh();
+	}.property('selectedEntityEnum'),
+	
+	refresh:function() {
+		
+    console.log("refresh ...");
+    var self = this;
+    var entityID = self.get('selectedEntityEnum.key');
+   var ver = self.get("item") ;
+   console.log(ver);
+     return self.data;
+     
+     // return App.Count.findSingleresById('c83b23c1-42c4-4948-8478-b0c02223f92f','GZ',entityID).then(function (data) {
+    
+   }
+
+}); 
