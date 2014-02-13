@@ -19,6 +19,16 @@ App.LineChartComponent = Ember.Component.extend({
     var elementId = this.get('elementId');
     var content = this.get("content");
     var height = this.get("height");
+    var data = this.buildData();
+    zingchart.render({
+      id:elementId,
+      height:height,
+      data:data
+    });
+  },
+
+  buildData:function () {
+    var content = this.get("content");
     var data = {
       type:"line",
       "gradient-colors":"#0f2e52 #1c4577 #0f2e52",
@@ -38,11 +48,17 @@ App.LineChartComponent = Ember.Component.extend({
       },
       series:content.series
     };
+    return data;
+  },
 
-    zingchart.render({
-      id:elementId,
-      height:height,
-      data:data
-    });
-  }
+  contentObserver:function () {
+    var elementId = this.get('elementId');
+    var data = this.buildData();
+    zingchart.exec(
+        elementId,
+        'setdata', {
+          data: data,
+          update: true
+        });
+  }.observes("content")
 })

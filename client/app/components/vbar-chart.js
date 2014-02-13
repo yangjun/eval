@@ -12,17 +12,29 @@ App.VbarChartComponent = Ember.Component.extend({
   },
 
   draw:function () {
-    // View not in DOM
-    if (!this.$()) { return; }
+    if (!this.$()) {
+      return;
+    }
     var elementId = this.get('elementId');
     var content = this.get("content");
     var height = this.get("height");
+    var data = this.buildData();
+
+    zingchart.render({
+      id:elementId,
+      height:height,
+      data:data
+    })
+  },
+
+  buildData:function () {
+    var content = this.get("content");
     var data = {
       type:"bar",
       "gradient-colors":"#0f2e52 #1c4577 #0f2e52",
       "gradient-stops":"0.1 0.5 0.9",
       "fill-angle":70,
-      title:{text: content.title},
+      title:{text:content.title},
       source:{ text:"Source: Farnsworth Delivery Tracking Gizmo"},
       chart:{
         "background-color":"#FFFFFF"
@@ -32,7 +44,7 @@ App.VbarChartComponent = Ember.Component.extend({
         "valueBox":{
           type:"all",
           placement:"top-in",
-          "font-color": "#FFFFFF"}
+          "font-color":"#FFFFFF"}
       },
       "scale-x":{
         "values":content.scale,
@@ -56,18 +68,20 @@ App.VbarChartComponent = Ember.Component.extend({
       "tooltip":{
         "text":"%k<br>%t<br>%v"
       },
-      series: content.series
+      series:content.series
     };
-
-    zingchart.render({
-      id:elementId,
-      height:height,
-      data:data
-    });
+    return data;
   },
 
   contentObserver:function () {
-    this.draw();
+    var elementId = this.get('elementId');
+    var data = this.buildData();
+    zingchart.exec(
+        elementId,
+        'setdata', {
+          data: data,
+          update: true
+        });
   }.observes("content")
 
 })
