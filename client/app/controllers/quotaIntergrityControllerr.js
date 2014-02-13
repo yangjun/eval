@@ -7,12 +7,10 @@
  */
 
 App.QuotaIntegrityController = Ember.ObjectController.extend({
-
-	selectedEntityEnum : null,
-
+	selectedEntityEnum : {},
+  items: Em.A(),
 	data : {
 		"title" : "完整性评测指标管理",
-
 		"items" : [{
 			"id" : "11",
 			"name" : "区域简称",
@@ -35,28 +33,27 @@ App.QuotaIntegrityController = Ember.ObjectController.extend({
 			"ischeck" : false
 		}]
 	},
-	selectedEntity : function() {
 
-		return this.refresh();
+	selectedEntity : function() {
+		this.refresh();
 	}.property('selectedEntityEnum'),
 
 	refresh : function() {
-
 		console.log("refresh ...");
 		var self = this;
 		var entityID = self.get('selectedEntityEnum.key');
 		console.log(entityID);
-		return self.data;
-	//	var entitys = [];
-	//	App.Quota.findFieldByResType(entityID).then(function(data) {
-	//		data.forEach(function(entity) {
-	//			var model = App.Quota.create(entity);
-	//			entitys.addObject(model);
-
-	//		})
-	//	});
-
-	//	return entitys;
-
+    //todo clear items
+    self.items.clear();
+    for (i = 0; i < self.data.items.length; i++) {
+      var _item =  self.data.items[i];
+      var item = new App.CheckObject();
+      item.set('id', _item.id);
+      item.set('name', _item.name);
+      item.set('type', _item.type);
+      item.set('ischeck', _item.ischeck);
+      item.set('isLoading', false);
+      self.items.pushObject(item);
+    }
 	}
 });

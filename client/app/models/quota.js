@@ -9,29 +9,29 @@
 // Quota
 
 
-	
+
 App.Quota = Ember.Object.extend({
 });
 
 App.Quota.reopenClass({
-	
+
   /**
    * 完整性评测指标管理
    */
-  
-   
-   quotaIntegrity:function () {
+
+
+  quotaIntegrity:function () {
     var url = 'rest/evaluate/evaluateVersion';
     // promise
     return App.Ajax.get(url);
   },
-  
-  findFieldByResType : function (entityType) {
-  	//var url = "../data/rs/quota/integrity.json";
-    var url = 'rest/dictinary/fieldDictionary/'+entityType;
+
+  findFieldByResType:function (entityType) {
+    //var url = "../data/rs/quota/integrity.json";
+    var url = 'rest/dictinary/fieldDictionary/' + entityType;
     return App.Ajax.get(url);
   },
-  
+
   /**
    * 单维度
    */
@@ -40,4 +40,14 @@ App.Quota.reopenClass({
     // promise
     return App.Ajax.get(url);
   }
+});
+
+
+App.CheckObject = Ember.Object.extend({
+  ischeckObserver:function () {
+    this.set('isLoading', true);
+    console.log(this.id + " ischeck change = " + this.ischeck);
+    // todo post
+    this.set('isLoading', false);
+  }.observes("ischeck")
 });

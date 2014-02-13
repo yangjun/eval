@@ -1,50 +1,45 @@
 <div class="row">
- <legend><h3 class="text-center">{{selectedEntity.title}}</h3></legend>
-
-
+    <legend><h3 class="text-center">{{selectedEntity.title}}</h3></legend>
 
     <div class="col-md-12">
-     <div class="row">
-      <div class="col-md-2">
-        <p class="text-right">资源类别</p>
-      </div>
-     <div class="col-md-4">
-    
-     {{view Ember.Select id="entitys" 
-					  contentBinding="content"
-					  selectionBinding="selectedEntityEnum"  
-					  optionValuePath="content.key"  
-					  optionLabelPath="content.value" 
-					   }}
-     </div>
+        <div class="row">
+            <div class="col-md-2">
+                <p class="text-right">资源类别</p>
+            </div>
+            <div class="col-md-4">
 
-    </div> 
-<p>   </p>
-    
+              {{view Ember.Select id="entitys"
+              contentBinding="content"
+              selectionBinding="selectedEntityEnum"
+              optionValuePath="content.key"
+              optionLabelPath="content.value"
+              }}
+            </div>
+
+        </div>
+        <p></p>
 
 
-    
-   
- <table class="table table-hover">
-                <thead>
-                <tr>
-	              <th>   </th>
-			      <th>属性</th>
-			      <th>资源类型</th>
-                </tr>
-                </thead>
-                <tbody>
-                  {{#each item in selectedEntity.items}}
-                  <form class="form-horizontal">
-                       <tr>
-                          <td>{{view Ember.Checkbox  {{action 'changeStatus' item}}  checkedBinding=item.ischeck }}</td>
-					      <td>{{item.name}}</td>
-					      <td>{{item.type}}</td>
-                      </tr>
-                      </from>
-                  {{/each}}
-                </tbody>
-            </table>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th></th>
+                <th>属性</th>
+                <th>资源类型</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each item in items}}
+                <form class="form-horizontal">
+                    <tr>
+                        <td>{{#if item.isLoading}}<i class="fa fa-cog fa-spin"></i>{{/if}}{{view Ember.Checkbox checked=item.ischeck}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.type}}</td>
+                    </tr>
+                    </from>
+            {{/each}}
+            </tbody>
+        </table>
 
     </div>
 </div>
