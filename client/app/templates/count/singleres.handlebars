@@ -7,16 +7,16 @@
     <div class="col-sm-12">
         <div class="row">
 
-      <div class="col-sm-2">
+      <div class="col-md-2">
         <p class="text-right">版本选择</p>
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4">
       {{type-ahead url='evaluate-web/rest/evaluate/evaluateVersion' template='' selection=version placeholder='选择不同的版本'}}
       </div>
-      <div class="col-sm-2">
+      <div class="col-md-3">
         <p class="text-right">资源类别</p>
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-3">
 					{{view Ember.Select id="entitys" 
 					  contentBinding="content"
 					  selectionBinding="selectedEntityEnum"  

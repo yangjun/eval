@@ -8,28 +8,27 @@
 
 App.CountSingleresController = Ember.ObjectController.extend({
 	selectedEntityEnum : {},
-  data : {},
-  version: {},
+	data : {},
+	version : {},
 
-  init: function() {
-    isLoading: false
-  },
+	init : function() { isLoading:false
+	},
 
-	selectedEntity: function() {
-    this.refresh1();
-	}.property('selectedEntityEnum','version'),
+	selectedEntity : function() {
+		this.refresh1();
+	}.property('selectedEntityEnum', 'version'),
 
-	refresh1: function() {
+	refresh1 : function() {
 		console.log("refresh ...");
-    this.set("isLoading", true);
+		this.set("isLoading", true);
 		var self = this;
 		var entityID = self.get('selectedEntityEnum.key');
 		console.log("entityID = " + entityID);
-    var promise = App.Count.findSingleresById('GZ', self.get("version.id"), entityID);
-    promise.then(function(data) {
-      var model = App.Count.procsingleres(data);
-      self.set('data', model);
-      self.set("isLoading", false);
-    });
+		var promise = App.Count.findSingleresById('GZ', self.get("version.id"), entityID);
+		promise.then(function(data) {
+			var model = App.Count.procsingleres(data);
+			self.set('data', model);
+			self.set("isLoading", false);
+		});
 	}
 });

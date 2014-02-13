@@ -1,6 +1,5 @@
 <div class="row">
- <legend><h3 class="text-center">{{model.title}}</h3></legend>
-
+ <legend><h3 class="text-center">{{selectedEntity.title}}</h3></legend>
 
 
 
@@ -17,8 +16,6 @@
 					  optionValuePath="content.key"  
 					  optionLabelPath="content.value" 
 					   }}
-     
-     
      </div>
 
     </div> 
@@ -40,7 +37,7 @@
                   {{#each item in selectedEntity.items}}
                   <form class="form-horizontal">
                        <tr>
-                          <td> {{view Ember.Checkbox checkedBinding=item.ischeck }}</td>
+                          <td>{{view Ember.Checkbox  {{action 'changeStatus' item}}  checkedBinding=item.ischeck }}</td>
 					      <td>{{item.name}}</td>
 					      <td>{{item.type}}</td>
                       </tr>
