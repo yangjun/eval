@@ -18,6 +18,7 @@ App.HbarChartComponent = Ember.Component.extend({
     var content = this.get("content");
     var height = this.get("height");
     var data = this.buildData();
+
     zingchart.render({
       id:elementId,
       height:height,
@@ -68,9 +69,10 @@ App.HbarChartComponent = Ember.Component.extend({
       },
       series: content.series
     };
+    return data;
   },
 
-  contentObserver:function () {
+  updateData: function() {
     var elementId = this.get('elementId');
     var data = this.buildData();
     zingchart.exec(
@@ -79,6 +81,10 @@ App.HbarChartComponent = Ember.Component.extend({
           data: data,
           update: true
         });
+  },
+
+  contentObserver:function () {
+    Ember.run.once(this, 'updateData');
   }.observes("content")
 
 })

@@ -46,7 +46,7 @@ App.RadarChartComponent = Ember.Component.extend({
     return data;
   },
 
-  contentObserver:function () {
+  updateData: function() {
     var elementId = this.get('elementId');
     var data = this.buildData();
     zingchart.exec(
@@ -55,5 +55,10 @@ App.RadarChartComponent = Ember.Component.extend({
           data: data,
           update: true
         });
+  },
+
+  contentObserver:function () {
+    Ember.run.once(this, 'updateData');
   }.observes("content")
+
 })
