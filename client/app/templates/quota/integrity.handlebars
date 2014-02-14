@@ -7,7 +7,6 @@
                 <p class="text-right">资源类别</p>
             </div>
             <div class="col-md-4">
-
               {{view Ember.Select id="entitys"
               contentBinding="content"
               selectionBinding="selectedEntityEnum"
@@ -15,28 +14,32 @@
               optionLabelPath="content.value"
               }}
             </div>
-
         </div>
         <p></p>
-
 
         <table class="table table-hover">
             <thead>
             <tr>
-                <th></th>
+                <th>图标</th>
+                <th>是否检测</th>
                 <th>属性名称</th>
                 <th>资源类型</th>
-                
             </tr>
             </thead>
             <tbody>
-            {{#each item in items}}
+            {{#each row in items}}
                 <form class="form-horizontal">
                     <tr>
-                    
-                        <td>{{#if item.isLoading}}<i class="fa fa-cog fa-spin"></i>{{/if}}{{view Ember.Checkbox checked=item.ischeck}}</td>
-                        <td>{{item.propertyName}}</td>
-                        <td>{{item.typeName}}</td>
+                        <td>
+                          {{#if row.isRunning}}
+                              <i class="fa fa-cog fa-spin"></i>
+                            {{eles}}
+                              <i class="fa fa-circle"></i>
+                          {{/if}}
+                        </td>
+                        <td>{{view Ember.Checkbox checked=row.ischeck}}</td>
+                        <td>{{row.propertyName}}</td>
+                        <td>{{row.typeName}}</td>
                     </tr>
                     </from>
             {{/each}}

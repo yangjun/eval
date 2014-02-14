@@ -36,9 +36,12 @@ App.Ajax.reopenClass({
 
   post:function (url, data) {
     var self = this;
+    var _url = self.genUrl(url);
+    //console.log("_url = " + _url);
     var ajax = Ember.$.ajax({
       type:"POST",
-      url:self.genUrl(url),
+      dataType: 'json',
+      url: _url,
       data:JSON.stringify(data),
       contentType:"application/json"
     });

@@ -8,14 +8,15 @@
 
 App.QuotaIntegrityController = Ember.ObjectController.extend({
 	selectedEntityEnum : {},
-	items : Em.A(),
+
+  items: Em.A(),
+
 
 	selectedEntity : function() {
 		this.refresh();
 	}.property('selectedEntityEnum'),
 
 	refresh : function() {
-		console.log("refresh ...");
 		var self = this;
 		var entityID = self.get('selectedEntityEnum.key');
 		console.log(entityID);

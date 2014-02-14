@@ -27,7 +27,7 @@ App.Quota.reopenClass({
   },
 
   findFieldByResType:function (entityType) {
-   
+
     var url = 'rest/dictinary/fieldDictionary/NOT_NULL/' + entityType;
     return App.Ajax.get(url);
   },
@@ -45,31 +45,28 @@ App.Quota.reopenClass({
 
 App.CheckObject = Ember.Object.extend({
   ischeckObserver:function () {
-  	var self = this;
-  	
-    self.set('isLoading', true);
-    console.log(self.propertyName + " ischeck change = " + self.ischeck+"***"+self.evaluateItemID);
-    // todo post
-    if(self.ischeck){
-    	//增加
-    	var url = 'rest/evaluateItem/evaluateItem?evaluateType=NOT_NULL&objectDictionaryID='
-    	+self.typeID
-    	+'&fieldDictionaryID='
-    	+self.propertyID;
-    	
-    	App.Ajax.post(url,null);
-    //	.then(function(data) {
-    //		console.log(data.evaluateItemID)
-	//		self.set("evaluateItemID",data.evaluateItemID);
-	//	});
-    	
-    }else{
-    	//删除
-    	var url = 'rest/evaluateItem/evaluateItem/NOT_NULL/'+self.evaluateItemID;
-    	App.Ajax.delete(url);
+    var self = this;
+    self.set('isRunning', true);
+    if (self.ischeck) {
+      //增加
+      var url = 'rest/evaluateItem/evaluateItem?evaluateType=NOT_NULL&objectDictionaryID='
+          + self.typeID
+          + '&fieldDictionaryID='
+          + self.propertyID;
+
+      var promise = App.Ajax.post(url, {});
+      promise.then(function (data) {
+        self.set("evaluateItemID", data.id);
+        self.set('isRunning', false);
+      });
+
+    } else {
+      //删除
+      var url = 'rest/evaluateItem/evaluateItem/NOT_NULL/' + self.evaluateItemID;
+      var promise = App.Ajax.delete(url);
+      promise.then(function (data) {
+        self.set('isRunning', false);
+      });
     }
-    
-    
-    this.set('isLoading', false);
   }.observes("ischeck")
 });
