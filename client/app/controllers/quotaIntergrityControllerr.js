@@ -9,30 +9,7 @@
 App.QuotaIntegrityController = Ember.ObjectController.extend({
 	selectedEntityEnum : {},
   items: Em.A(),
-	data : {
-		"title" : "完整性评测指标管理",
-		"items" : [{
-			"id" : "11",
-			"name" : "区域简称",
-			"type" : "区域",
-			"ischeck" : true
-		}, {
-			"id" : "12",
-			"name" : "区域编码",
-			"type" : "区域",
-			"ischeck" : false
-		}, {
-			"id" : "13",
-			"name" : "区域类型",
-			"type" : "区域",
-			"ischeck" : true
-		}, {
-			"id" : "14",
-			"name" : "区域名称",
-			"type" : "区域",
-			"ischeck" : false
-		}]
-	},
+	
 
 	selectedEntity : function() {
 		this.refresh();
@@ -45,15 +22,35 @@ App.QuotaIntegrityController = Ember.ObjectController.extend({
 		console.log(entityID);
     //todo clear items
     self.items.clear();
-    for (i = 0; i < self.data.items.length; i++) {
-      var _item =  self.data.items[i];
-      var item = new App.CheckObject();
-      item.set('id', _item.id);
-      item.set('name', _item.name);
-      item.set('type', _item.type);
-      item.set('ischeck', _item.ischeck);
-      item.set('isLoading', false);
-      self.items.pushObject(item);
+    
+    App.Quota.findFieldByResType(entityID).then(function(data) {
+			data.forEach(function(field) {
+				var item = new App.CheckObject();
+				
+				
+				item.set('evaluateItemID',field.evaluateItemID);
+				item.set('propertyName',field.propertyName);
+				item.set('propertyID',field.propertyID);
+				item.set('typeName',field.typeName);
+				item.set('typeID',field.typeID);
+				if(field.evaluateItemID==null ){
+					item.set('ischeck',false);
+				}else{
+					item.set('ischeck',true);
+				}
+				item.set('isLoading', false);
+				self.items.pushObject(item);	
+			})
+		});
+    
+  //  for (i = 0; i < self.data.items.length; i++) {
+   //   var _item =  self.data.items[i];
+   //   var item = new App.CheckObject();
+    //  item.set('id', _item.id);
+    //  item.set('name', _item.name);
+    //  item.set('type', _item.type);
+    //  item.set('ischeck', _item.ischeck);
+    //  item.set('isLoading', false);
+    //  self.items.pushObject(item);
     }
-	}
 });

@@ -24,26 +24,8 @@ App.QuotaIntegrityRoute = Ember.Route.extend({
 
 	setupController : function(controller, model) {
 		controller.set('model', model);
-	},
-
-	actions : {
-
-		changeStatus : function(item) {
-			var self = this;
-			var controller = self.controllerFor('quotaIntegrity');
-
-			console.log("kaishi:" + item.ischeck);
-			if (item.ischeck == true) {
-				item.ischeck = false;
-			} else {
-				item.ischeck = true;
-			}
-
-			console.log("结束：" + item.ischeck);
-			//	item.changeStatus(item).then(function(data) {
-
-			//	});
-		}
 	}
+
+	
 
 }); 

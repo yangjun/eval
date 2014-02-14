@@ -27,8 +27,8 @@ App.Quota.reopenClass({
   },
 
   findFieldByResType:function (entityType) {
-    //var url = "../data/rs/quota/integrity.json";
-    var url = 'rest/dictinary/fieldDictionary/' + entityType;
+   
+    var url = 'rest/dictinary/fieldDictionary/NOT_NULL/' + entityType;
     return App.Ajax.get(url);
   },
 
@@ -45,9 +45,31 @@ App.Quota.reopenClass({
 
 App.CheckObject = Ember.Object.extend({
   ischeckObserver:function () {
-    this.set('isLoading', true);
-    console.log(this.id + " ischeck change = " + this.ischeck);
+  	var self = this;
+  	
+    self.set('isLoading', true);
+    console.log(self.propertyName + " ischeck change = " + self.ischeck+"***"+self.evaluateItemID);
     // todo post
+    if(self.ischeck){
+    	//增加
+    	var url = 'rest/evaluateItem/evaluateItem?evaluateType=NOT_NULL&objectDictionaryID='
+    	+self.typeID
+    	+'&fieldDictionaryID='
+    	+self.propertyID;
+    	
+    	App.Ajax.post(url,null);
+    //	.then(function(data) {
+    //		console.log(data.evaluateItemID)
+	//		self.set("evaluateItemID",data.evaluateItemID);
+	//	});
+    	
+    }else{
+    	//删除
+    	var url = 'rest/evaluateItem/evaluateItem/NOT_NULL/'+self.evaluateItemID;
+    	App.Ajax.delete(url);
+    }
+    
+    
     this.set('isLoading', false);
   }.observes("ischeck")
 });

@@ -24,22 +24,23 @@
             <thead>
             <tr>
                 <th></th>
-                <th>属性</th>
+                <th>属性名称</th>
                 <th>资源类型</th>
+                
             </tr>
             </thead>
             <tbody>
             {{#each item in items}}
                 <form class="form-horizontal">
                     <tr>
+                    
                         <td>{{#if item.isLoading}}<i class="fa fa-cog fa-spin"></i>{{/if}}{{view Ember.Checkbox checked=item.ischeck}}</td>
-                        <td>{{item.name}}</td>
-                        <td>{{item.type}}</td>
+                        <td>{{item.propertyName}}</td>
+                        <td>{{item.typeName}}</td>
                     </tr>
                     </from>
             {{/each}}
             </tbody>
         </table>
-
     </div>
 </div>
