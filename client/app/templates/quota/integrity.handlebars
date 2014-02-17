@@ -16,7 +16,9 @@
             </div>
         </div>
         <p></p>
-
+		
+		{{selectedEntity}}
+		
         <table class="table table-hover">
             <thead>
             <tr>
@@ -31,10 +33,10 @@
                 <form class="form-horizontal">
                     <tr>
                         <td>
+                              <i class="fa fa-circle"></i>
                           {{#if row.isRunning}}
                               <i class="fa fa-cog fa-spin"></i>
-                            {{eles}}
-                              <i class="fa fa-circle"></i>
+                         
                           {{/if}}
                         </td>
                         <td>{{view Ember.Checkbox checked=row.ischeck}}</td>

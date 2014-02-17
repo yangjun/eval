@@ -7,41 +7,32 @@
  */
 
 App.SystemOverseeRoute = Ember.Route.extend({
-  model: function(params) {
-    var self = this;
-    var controller = self.controllerFor('quotaIntegrity');
-    var quotas = [];
+	model : function(params) {
+		var self = this;
+		var controller = self.controllerFor('systemOversee');
+		self.set('isImporting',false);
 	
-    return App.Quota.quotaIntegrity().then(function (data) {
-     var value = Em.Object.create(data);
-    return value;
-    
-    });
-  },
+	},
 
- setupController: function(controller, model) {
-      controller.set('model', model);
- },
+	setupController : function(controller, model) {
+		controller.set('model', model);
+	},
 
- actions : {
+	actions : {
 		error : function(reason) {
 			//console.log("error:" + reason);
 		},
 
-		useradd : function() {
+		importData : function() {
 			var self = this;
-			var controller = self.controllerFor('userAdd');
-			var user = controller.get("user");
-			//var data = controller.getProperties('name', 'password', 'nickname', 'email', 'mobilephone', 'telephone');
-			controller.set('isLoad', true);
-			user.add().then(function(data) {
-				controller.transitionToRoute("user");
-				controller.set('isLoad', false);
-			}, function(reason) {
-				controller.set('isError', reason);
-				controller.set('isLoad', false);
-			});
+			var controller = self.controllerFor('systemOversee');
+			console.log("error:" + reason);
+			App.System.importData().then(function(data) {
+			self.set('isImporting',true);
+		});
+			
+			
 
 		}
 	}
-});
+}); 

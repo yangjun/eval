@@ -8,10 +8,10 @@
 
 App.IndexController = Ember.ObjectController.extend({
   data: {
-    title: "标题",
+    title: "总体质量",
     scale: [
-      "指标1","指标2","指标3","指标4","指标5","指标6"
-    ],
+    "完整性","规范性","唯一性","逻辑性","准确性","管理类"
+  ],
     series: [
       {
         "values":[8,14,53,30,69,25],
@@ -21,9 +21,9 @@ App.IndexController = Ember.ObjectController.extend({
     ]
   },
   data1: {
-    title: "唯一性指标地区排名",
+    title: "单项资源总体质量",
     scale: [
-      "地区3","地区5","地区1","地区6","地区5","地区4"
+       "完整性","规范性","唯一性","逻辑性","准确性","管理类"
     ],
     series: [
       {
@@ -35,22 +35,59 @@ App.IndexController = Ember.ObjectController.extend({
     ]
   },
   data2: {
-    title: "XX地区趋势",
+    title: "维度资源评测",
     scale: [
-      "2013-01","2013-02","2013-03","2013-04","2013-05","2013-06"
+       "区域","站点","机房","机架","网元","光缆","传输段"
     ],
     series: [
       {
-        "values":[8,14,30,68,75,98],
-        "background-color":"green",
-        "fill-angle":-90,
-        "text":"唯一性指标"
-      },
-      {
-        "values":[18,35,42,35,17,35],
+        "values":[99,62,53,30,69,79,89],
         "background-color":"red",
         "fill-angle":-90,
-        "text":"XX性指标"
+        "text":"唯一性指标"
+      }
+    ]
+  },
+  
+   data3: {
+    title: "总体质量趋势",
+    scale: [
+       "1月","3月","5月","5月","9月","11月"
+    ],
+    series: [
+      {
+        "values":[8,14,25,30,69,64],
+        "background-color":"red",
+        "fill-angle":-90,
+        "text":"总体质量趋势"
+      }
+    ]
+  },
+  data4: {
+    title: "单维度质量趋势",
+    scale: [
+       "1月","3月","5月","5月","9月","11月"
+    ],
+    series: [
+      {
+        "values":[15,14,25,39,69,64],
+        "background-color":"red",
+        "fill-angle":-90,
+        "text":"单维度质量趋势"
+      }
+    ]
+  },
+  data5: {
+    title: "单资源总体质量趋势",
+    scale: [
+       "1月","3月","5月","5月","9月","11月"
+    ],
+    series: [
+      {
+        "values":[1,14,25,30,14,64],
+        "background-color":"red",
+        "fill-angle":-90,
+        "text":"单资源总体质量趋势"
       }
     ]
   },

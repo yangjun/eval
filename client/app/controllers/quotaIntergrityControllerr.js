@@ -7,13 +7,13 @@
  */
 
 App.QuotaIntegrityController = Ember.ObjectController.extend({
-	selectedEntityEnum : {},
+  selectedEntityEnum : {},
 
   items: Em.A(),
 
-
 	selectedEntity : function() {
-		this.refresh();
+		Ember.run.once(this, 'refresh');
+		//this.refresh();
 	}.property('selectedEntityEnum'),
 
 	refresh : function() {
