@@ -26,8 +26,20 @@ App.SystemOverseeRoute = Ember.Route.extend({
 		importData : function() {
 			var self = this;
 			var controller = self.controllerFor('systemOversee');
-			console.log("error:" + reason);
+			//console.log("error:" + reason);
 			App.System.importData().then(function(data) {
+			self.set('isImporting',true);
+		});
+			
+			
+
+		},
+		
+		evaluate : function() {
+			var self = this;
+			var controller = self.controllerFor('systemOversee');
+			//console.log("error:" + reason);
+			App.System.evaluate().then(function(data) {
 			self.set('isImporting',true);
 		});
 			
