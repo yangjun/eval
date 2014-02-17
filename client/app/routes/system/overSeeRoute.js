@@ -10,41 +10,39 @@ App.SystemOverseeRoute = Ember.Route.extend({
 	model : function(params) {
 		var self = this;
 		var controller = self.controllerFor('systemOversee');
-		self.set('isImporting',false);
-	
+		
+		return App.System.importDataStatus().then(function(data) {
+			controller.set('isImporting', data.isImporting);
+			
+		});
+		
+		
 	},
 
 	setupController : function(controller, model) {
 		controller.set('model', model);
-	},
-
-	actions : {
-		error : function(reason) {
-			//console.log("error:" + reason);
-		},
-
-		importData : function() {
-			var self = this;
-			var controller = self.controllerFor('systemOversee');
-			//console.log("error:" + reason);
-			App.System.importData().then(function(data) {
-			self.set('isImporting',true);
+		App.System.evaludateStatus().then(function(data) {
+			controller.set('isEvaluating', data.isEvaluating);
 		});
-			
-			
-
-		},
-		
-		evaluate : function() {
-			var self = this;
-			var controller = self.controllerFor('systemOversee');
-			//console.log("error:" + reason);
-			App.System.evaluate().then(function(data) {
-			self.set('isImporting',true);
-		});
-			
-			
-
-		}
 	}
+	
 }); 
+
+
+App.SystemOverseeRoute.reopen({
+  activate:function () {
+    console.log("activate...");
+    var self = this;
+    var controller = self.controllerFor('systemOversee');
+    console.log("controller = " + controller);
+    //
+  },
+
+  deactivate:function () {
+    console.log("deactivate...");
+    var self = this;
+    var controller = self.controllerFor('systemOversee');
+    controller.stop();
+  }
+
+})

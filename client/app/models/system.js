@@ -19,7 +19,6 @@ App.System.reopenClass({
 	importData : function() {
 		var url = "rest/evaluate/importData";
 		return App.Ajax.post(url, {});
-
 	},
 	
 	/**
@@ -51,6 +50,7 @@ App.System.reopenClass({
 		return App.Ajax.get(url);
 
 	},
+	
 	findEntityEnum : function() {
 		var url = 'rest/basicData/entityEnum';
 		// promise
