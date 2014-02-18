@@ -7,70 +7,116 @@
  */
 
 App.SystemOverseeController = Ember.ObjectController.extend({
-  isImporting: false,	
-  actions : {
+	isImporting : false,
+	ImportOK : false,
+	isEvaluating : false,
+	EvalOK : false,
+	actions : {
 		importData : function() {
 			console.log("importData...");
 			var self = this;
-		
+
 			//console.log("error:" + reason);
-			self.set('isImporting',true);
-			
+			self.set('isImporting', true);
+			self.set('ImportOK', false);
+			self.set('EvalOK', false);
 			App.System.importData().then(function(data) {
 				console.log("data:" + data);
-			
-			    self.start();
-				
-		}, function(reason) {
-				console.log("reason:" + reason);
-			   self.set('isImporting',false);
-			   self.stop();
-		});
-				
+				self.start();
+			}, function(reason) {
+				console.log("reason:" + JSON.stringify(reason));
+				self.set('isImporting', true);
+				self.start();
+				//self.stop();
+			});
+
 		},
-		
+
 		evaluate : function() {
+			console.log("evaluate...");
 			var self = this;
-			var controller = self.controllerFor('systemOversee');
-			//console.log("error:" + reason);
+			self.set('isEvaluating', true);
+
+			self.set('ImportOK', false);
+			self.set('EvalOK', false);
+			
 			App.System.evaluate().then(function(data) {
-			self.set('isImporting',true);
-		});
-			
-			
+				console.log("data:" + data);
+				self.start2();
+			}, function(reason) {
+				console.log("reason:" + JSON.stringify(reason));
+				self.set('isEvaluating', true);
+				self.start2();
+				//self.stop();
+			});
 		}
 	},
-	
-	refresh: function() {
-	    console.log("refresh...");
-	    var _this = this;
+
+	refresh : function() {
+		//console.log("refresh...");
+		var _this = this;
 		App.System.importDataStatus().then(function(data) {
-				console.log("data:" + data);
-				if(data.isImporting===false){
-					//tishiwancheng
-					
-					//
-					_this.stop();
-				}
-				_this.set('isImporting',data.isImporting);
+			//console.log("data:" + JSON.stringify(data));
+			if (data.isImporting === false) {
+				//tishiwancheng
+				_this.set('ImportOK', true);
+				//
+				_this.stop();
+			}
+			_this.set('isImporting', data.isImporting);
 		}, function(reason) {
-				console.log("reason:" + reason);
-			   _this.set('isImporting',false);
+			console.log("reason:" + reason);
+			_this.set('isImporting', false);
 		})
 	},
-	
-	start:function () {
-    if (this.timer == undefined || this.timer === null) {
-      this.timer = setInterval(this.onPull.bind(this), 1000);
-    }
-  },
 
-  stop:function () {
-    clearInterval(this.timer);
-    this.timer = null;
-  },
+	start : function() {
+		if (this.timer == undefined || this.timer === null) {
+			this.timer = setInterval(this.onPull.bind(this), 1000);
+		}
+	},
 
-  onPull:function () {
-    this.refresh();
-  }
+	stop : function() {
+		clearInterval(this.timer);
+		this.timer = null;
+	},
+
+	onPull : function() {
+		this.refresh();
+	},
+	//
+	//
+	//下面为评测所用
+	refresh2 : function() {
+		//console.log("refresh...");
+		var _this = this;
+		App.System.evaludateStatus().then(function(data) {
+			//console.log("data:" + JSON.stringify(data));
+			if (data.isEvaluating === false) {
+				//tishiwancheng
+_this.set('EvalOK', true);
+				//
+				_this.stop2();
+			}
+			_this.set('isEvaluating', data.isEvaluating);
+		}, function(reason) {
+			console.log("reason:" + reason);
+			_this.set('isEvaluating', false);
+		})
+	},
+
+	start2 : function() {
+		if (this.timer == undefined || this.timer === null) {
+			this.timer = setInterval(this.onPull2.bind(this), 1000);
+		}
+	},
+
+	stop2 : function() {
+		clearInterval(this.timer);
+		this.timer = null;
+	},
+
+	onPull2 : function() {
+		this.refresh2();
+	},
 });
