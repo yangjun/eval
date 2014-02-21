@@ -89,6 +89,12 @@ App.Count.reopenClass({
 		var url = "../data/rs/count/dimensions.json";
 		return App.Ajax.get(url);
 	},
+	
+	getLastVersion : function() {
+		var url = 'rest/basicData/entityEnum';
+		// promise
+		return App.Ajax.get(url);
+	},
 
 	findEntityEnum : function() {
 		var url = 'rest/basicData/entityEnum';

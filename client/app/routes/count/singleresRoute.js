@@ -11,16 +11,24 @@ App.CountSingleresRoute = Ember.Route.extend({
 		var self = this;
 		var controller = self.controllerFor('countSingleres');
 		var entitys = [];
-		//version : {},
-		//entityID : {},
 		App.Count.findEntityEnum().then(function(data) {
 			data.forEach(function(entity) {
 				var model = App.Count.create(entity);
 				entitys.addObject(model);
 			})
+			if (entitys.length > 0) {
+				console.log("entitys[0] : " + JSON.stringify(entitys[0]));
+				controller.set('selectedEntityEnum', entitys[0]);
+			}
 		});
-		return entitys;
 		
+		//获取最后一次版本
+		App.Count.getLastVersion().then(function(data) {
+			
+		});
+
+		return entitys;
+
 	},
 
 	setupController : function(controller, model) {
@@ -30,4 +38,4 @@ App.CountSingleresRoute = Ember.Route.extend({
 	//    console.log("transitionTo count.overview");
 	//    this.transitionTo('count.overview');
 	//  }
-}); 
+});

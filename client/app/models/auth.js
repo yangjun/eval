@@ -25,7 +25,8 @@ App.Auth.reopenClass({
    * @return {*} promise
    */
   auth: function(data) {
-    var url = 'rs/auth/auth.json';
+    
+    	var url = "../data/rs/auth/auth.json";
     // promise
     return App.Ajax.get(url, data);
   },
