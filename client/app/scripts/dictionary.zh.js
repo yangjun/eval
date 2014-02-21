@@ -148,11 +148,11 @@ Em.I18n.translations = {
 	'job.buile.more':'每次增加5条记录',
 	'log.buile.more':'添加100行日志记录',
 	
-	'app.title': '应用程序标题',
-	'app.copyright': '2013 广东电网电力调度控制中心 CopyRight All Rights Reserved',
+	'app.title': '贵州电网通信资源管理自评系统',
+	'app.copyright': '2014 贵州电网电力调度控制中心 CopyRight All Rights Reserved',
 	'app.copyright.tip': '版权信息',
-	'app.address.addr': '地址：广州市梅花路75号 ',
-	'app.address.postcode': '邮编：510600',
+	'app.address.addr': '地址：贵阳市南明区解放路32 号 ',
+	'app.address.postcode': '邮编：550000',
 	'app.address.phone': '电话：85122000(通信调度)',
 
   'app.home.title': '首页'

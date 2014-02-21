@@ -2,10 +2,10 @@
 
       {{#if param}}
         {{#link-to name param tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                href="#"><i class="fa fa-bar-chart-o"></i>{{title}}</a>{{/link-to}}
+                href="#">{{title}}</a>{{/link-to}}
       {{else}}
         {{#link-to name tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                href="#"><i class="fa fa-bar-chart-o"></i>{{title}}</a>{{/link-to}}
+                href="#">{{title}}</a>{{/link-to}}
       {{/if}}
 
 {{/each}}
