@@ -91,7 +91,7 @@ App.Count.reopenClass({
 	},
 	
 	getLastVersion : function() {
-		var url = 'rest/basicData/entityEnum';
+		var url = 'rest/evaluate/evaluateVersion/TheLast';
 		// promise
 		return App.Ajax.get(url);
 	},

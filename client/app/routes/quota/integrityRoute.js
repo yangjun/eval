@@ -18,6 +18,11 @@ App.QuotaIntegrityRoute = Ember.Route.extend({
 				var model = App.Count.create(entity);
 				entitys.addObject(model);
 			})
+			
+			if (entitys.length > 0) {
+				console.log("entitys[0] : " + JSON.stringify(entitys[0]));
+				controller.set('selectedEntityEnum', entitys[0]);
+			}
 		});
 		return entitys;
 	},

@@ -20,10 +20,12 @@ App.CountSingleresRoute = Ember.Route.extend({
 				console.log("entitys[0] : " + JSON.stringify(entitys[0]));
 				controller.set('selectedEntityEnum', entitys[0]);
 			}
-		});
+		});  
 		
 		//获取最后一次版本
 		App.Count.getLastVersion().then(function(data) {
+			var version = App.Count.create(data);
+			controller.set('version', version);
 			
 		});
 
