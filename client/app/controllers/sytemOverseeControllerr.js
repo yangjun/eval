@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-App.SystemOverseeController = Ember.ObjectController.extend({
+App.SystemOverseeController = Ember.Controller.extend({
 	isImporting : false,
 	ImportOK : false,
 	isEvaluating : false,
@@ -118,5 +118,5 @@ _this.set('EvalOK', true);
 
 	onPull2 : function() {
 		this.refresh2();
-	},
+	}
 });
