@@ -7,26 +7,23 @@
  */
 
 App.SystemOverseeRoute = Ember.Route.extend({
-	model : function(params) {
-		var self = this;
-		var controller = self.controllerFor('systemOversee');
-		
-		return App.System.importDataStatus().then(function(data) {
-			controller.set('isImporting', data.isImporting);
-			
-		});
-		
-		
-	},
+  model:function (params) {
+    var self = this;
+    var controller = self.controllerFor('systemOversee');
+    return Promise.all([App.System.importDataStatus(), App.System.evaludateStatus()]).then(function (values) {
+      console.log("model...");
+      var self = this;
+      controller.set('isImporting', values[0].isImporting);
+      controller.set('isEvaluating', values[1].isEvaluating);
+      return values;
+    });
+  },
 
-	setupController : function(controller, model) {
-		controller.set('model', model);
-		App.System.evaludateStatus().then(function(data) {
-			controller.set('isEvaluating', data.isEvaluating);
-		});
-	}
-	
-}); 
+  setupController:function (controller, model) {
+    controller.set('model', model);
+  }
+
+});
 
 
 App.SystemOverseeRoute.reopen({
@@ -34,8 +31,6 @@ App.SystemOverseeRoute.reopen({
     console.log("activate...");
     var self = this;
     var controller = self.controllerFor('systemOversee');
-    console.log("controller = " + controller);
-    //
   },
 
   deactivate:function () {
@@ -43,6 +38,7 @@ App.SystemOverseeRoute.reopen({
     var self = this;
     var controller = self.controllerFor('systemOversee');
     controller.stop();
+    controller.stop2();
   }
 
 })
