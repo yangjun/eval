@@ -18,7 +18,7 @@ App.Count.reopenClass({
 
 	overview : function() {
 		var url = "../data/rs/count/overview.json";
-    return App.Ajax.get(url);
+		return App.Ajax.get(url);
 
 	},
 
@@ -34,19 +34,23 @@ App.Count.reopenClass({
 	 * 单资源
 	 */
 	singleres : function() {
-		
+
 		var url = 'rest/evaluate/evaluateVersion';
 		return App.Ajax.get(url);
 	},
 
 	findSingleresById : function(position, evaluateVersionID, instanceType) {
 		var url = 'rest/result/unilateral/' + position + '/' + evaluateVersionID + '/' + instanceType;
-		return App.Ajax.get(url);
+
+
+		var result = App.Ajax.get(url);
+	
+		return result;
 
 	},
 
 	procsingleres : function(value) {
-		console.log("value =" + value)
+
 		var result = {};
 		result.title = "单项资源总体质量";
 		var scale = [];
@@ -56,32 +60,30 @@ App.Count.reopenClass({
 
 		for (var i = 0; i < value.length; i++) {
 			scale.push(value[i].dimension);
-      var score = value[i].score;
+			var score = value[i].score;
 			values.push(score);
 			var row = {};
-			row.index = i+1;
+			row.index = i + 1;
 			row.dimension = value[i].dimension;
 			row.score = score;
 			items.addObject(row);
 		}
-		
+
 		result.scale = scale;
 		var temp = {};
 		temp.values = values;
-		
+
 		temp["background-color"] = "red";
-		temp.alpha =  0.7;
-		
+		temp.alpha = 0.7;
+
 		series.addObject(temp);
-		
+
 		result.series = series;
 		result.items = items;
 
-		console.log("result = " + JSON.stringify(result));
-
 		return result;
-		
-	}, 
+
+	},
 	/**
 	 * 单维度
 	 */
@@ -89,7 +91,7 @@ App.Count.reopenClass({
 		var url = "../data/rs/count/dimensions.json";
 		return App.Ajax.get(url);
 	},
-	
+
 	getLastVersion : function() {
 		var url = 'rest/evaluate/evaluateVersion/TheLast';
 		// promise

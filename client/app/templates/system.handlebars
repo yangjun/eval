@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
 
      
 
@@ -10,23 +10,23 @@
      
       <div class="btn-group-vertical">
                 <ul>
-                  {{#link-to "" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                          href="#">用户管理</a>{{/link-to}}
-                  {{#link-to "" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                          href="#">权限管理</a>{{/link-to}}
-                  {{#link-to "" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                          href="#">采集地址管理</a>{{/link-to}}
-                  {{#link-to "" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                          href="#">评测任务调度管理</a>{{/link-to}}
-                  {{#link-to "" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                          href="#">日志管理</a>{{/link-to}}
-                  {{#link-to "system.oversee" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                          href="#">后台任务监视</a>{{/link-to}}
+                  {{#link-to "" tagName="p" href=false}}
+                          <button  class="btn btn-primary" ><i class="fa fa-sitemap"></i>&nbsp用户管理&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>{{/link-to}}
+                  {{#link-to "" tagName="p" href=false}}
+                          <button  class="btn btn-primary" ><i class="fa fa-sitemap"></i>&nbsp权限管理&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>{{/link-to}}
+                  {{#link-to "" tagName="p" href=false}}
+                          <button  class="btn btn-primary" ><i class="fa fa-sitemap"></i>&nbsp采集地址管理&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>{{/link-to}}
+                  {{#link-to "" tagName="p" href=false}}
+                          <button  class="btn btn-primary" ><i class="fa fa-sitemap"></i>&nbsp评测任务调度管理</button>{{/link-to}}
+                  {{#link-to "" tagName="p" href=false}}
+                          <button  class="btn btn-primary" ><i class="fa fa-sitemap"></i>&nbsp日志管理&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>{{/link-to}}
+                  {{#link-to "system.oversee" tagName="p" href=false}}
+                          <button  class="btn btn-primary" ><i class="fa fa-sitemap"></i>&nbsp后台任务监视&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>{{/link-to}}
                  
                 </ul>
             </div>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-9">
       {{outlet loading}}
       {{outlet}}
     </div>

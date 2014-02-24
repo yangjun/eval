@@ -1,6 +1,6 @@
 Em.I18n.translations = {
 	'app.loading.title': '正在努力加载，让页面飞一会儿...',
-	'login.title': '认证',
+	'login.title': '用户认证',
 	'login.error.code': '错误代码',
 	'login.error.message': '错误信息',
 	'login.button.title': '登录',  

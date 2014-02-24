@@ -25,6 +25,10 @@ App.Router.map(function() {
 		this.route("dimensions");
 		this.route("overtrend");
 		this.route("singleres");
+		this.route("area");
+		this.route("station");
+		this.route("room");
+		
 	});
 	
 	

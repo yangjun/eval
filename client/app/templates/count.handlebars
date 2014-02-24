@@ -7,44 +7,256 @@
                 <div class="accordion-heading">
                     <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion2"
                             href="#collapseOne">
-                        数据总体质量评价
+                       <i class="fa fa-bar-chart-o"></i>&nbsp数据总体质量评价
                     </button>
                 </div>
                 <div id="collapseOne" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="btn-group-vertical">
                             <ul>
-                              {{#link-to "count.overview" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">总体质量</a>{{/link-to}}
-                              {{#link-to 'count.dimensions' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">维度资源评测</a>{{/link-to}}
-                              {{#link-to 'count.singleres' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">单项资源总体质量</a>{{/link-to}}
+                            
+                            {{#link-to "count.overview" tagName="p" href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-th"></i>&nbsp总体质量</button>{{/link-to}}            
+                              {{#link-to 'count.dimensions' tagName="p" href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-th"></i>&nbsp维度资源评测</button>{{/link-to}}
+                              {{#link-to 'count.singleres' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-th"></i>&nbsp单项资源总体质量</button>{{/link-to}}
                             </ul>
 
                         </div>
                     </div>
                 </div>
             </div>
+            
+               <!--2-->
+
             <div class="accordion-group">
                 <div class="accordion-heading">
                     <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion2"
                             href="#collapseTwo">
-                        数据质量趋势
+                       <i class="fa fa fa-bar-chart-o"></i>&nbsp数据质量趋势&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     </button>
                 </div>
                 <div id="collapseTwo" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="btn-group-vertical">
-                            <ul>{{#link-to 'count.overtrend' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">总体质量趋势</a>{{/link-to}}</ul>
-                            <ul>{{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">单项维度质量趋势</a>{{/link-to}}</ul>
-                            <ul>{{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">单项资源总体质量趋势</a>{{/link-to}}</ul>
-                            <ul>{{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">单项资源单项维度质量趋势</a>{{/link-to}}</ul>
+                            <ul>{{#link-to 'count.overtrend' tagName="p" href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-th"></i>&nbsp总体质量趋势</button>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-th"></i>&nbsp单维度质量趋势</button>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-th"></i>&nbsp单项资源总体质量趋势</button>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-th"></i>&nbsp单项资源单维度质量趋势</button>{{/link-to}}</ul>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+                       
+             <!--3-->
+             <div class="accordion-group">
+                <div class="accordion-heading">
+                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion3"
+                            href="#collapsethree">
+                        <i class="fa fa fa-bar-chart-o"></i>&nbsp资源分项评测&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </button>
+                </div>
+                <div id="collapsethree" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div class="btn-group-vertical">
+                        <!--二级目录-->
+                           <!--1-->
+
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <button type="button" class="btn  btn-sm" data-toggle="collapse" data-parent="#accordion1"
+                            href="#collapse1">
+                      &nbsp&nbsp <i class="fa fa fa-bar-chart-o"></i>&nbsp空间资源&nbsp&nbsp
+                    </button>
+                </div>
+                <div id="collapse1" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div class="btn-group-vertical">
+                            <ul>{{#link-to 'count.area' tagName="p" href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-rss"></i>&nbsp区域</a>{{/link-to}}</ul>
+                            <ul>{{#link-to 'count.station' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa  fa-dot-circle-o"></i>&nbsp站点</a>{{/link-to}}</ul>
+                            <ul>{{#link-to 'count.room' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-home"></i>&nbsp机房</a>{{/link-to}}</ul>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                           <!--2-->
+                            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <button type="button" class="btn  btn-sm" data-toggle="collapse" data-parent="#accordion2"
+                            href="#collapse2">
+                      &nbsp&nbsp <i class="fa fa fa-bar-chart-o"></i>&nbsp实体资源&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </button>
+                </div>
+                <div id="collapse2" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div class="btn-group-vertical">
+                            <ul>{{#link-to '' tagName="p" href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp机架</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp子框</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp板卡</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp端口</a>{{/link-to}}</ul>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                           <!--3-->
+                           
+                           <div class="accordion-group">
+                <div class="accordion-heading">
+                    <button type="button" class="btn  btn-sm" data-toggle="collapse" data-parent="#accordion3"
+                            href="#collapse3">
+                      &nbsp&nbsp <i class="fa fa fa-bar-chart-o"></i>&nbsp光缆网资源&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </button>
+                </div>
+                <div id="collapse3" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div class="btn-group-vertical">
+                            <ul>{{#link-to '' tagName="p" href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp光缆段</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp光接头盒</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp光路</a>{{/link-to}}</ul>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                           <!--4-->
+                           
+                           <div class="accordion-group">
+                <div class="accordion-heading">
+                    <button type="button" class="btn btn-sm" data-toggle="collapse" data-parent="#accordion4"
+                            href="#collapse4">
+                      &nbsp&nbsp <i class="fa fa fa-bar-chart-o"></i>&nbsp传输网资源&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </button>
+                </div>
+                <div id="collapse4" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div class="btn-group-vertical">
+                            <ul>{{#link-to '' tagName="p" href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp传输网元</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp网元端口</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp传输段</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp电路</a>{{/link-to}}</ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                           <!--5-->
+                           
+                           <div class="accordion-group">
+                <div class="accordion-heading">
+                    <button type="button" class="btn btn-sm" data-toggle="collapse" data-parent="#accordion5"
+                            href="#collapse5">
+                      &nbsp&nbsp <i class="fa fa fa-bar-chart-o"></i>&nbsp接入网资源&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </button>
+                </div>
+                <div id="collapse5" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div class="btn-group-vertical">
+                            <ul>{{#link-to '' tagName="p" href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp网元</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp网元端口</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp链路</a>{{/link-to}}</ul>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                           <!--6-->
+                           
+                           <div class="accordion-group">
+                <div class="accordion-heading">
+                    <button type="button" class="btn btn-sm" data-toggle="collapse" data-parent="#accordion6"
+                            href="#collapse6">
+                      &nbsp&nbsp <i class="fa fa fa-bar-chart-o"></i>&nbsp交换网资源&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </button>
+                </div>
+                <div id="collapse6" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div class="btn-group-vertical">
+                            <ul>{{#link-to '' tagName="p" href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp网元</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp网元端口</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp链路</a>{{/link-to}}</ul>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                           <!--7-->
+                           
+                           <div class="accordion-group">
+                <div class="accordion-heading">
+                    <button type="button" class="btn btn-sm" data-toggle="collapse" data-parent="#accordion7"
+                            href="#collapse7">
+                      &nbsp&nbsp <i class="fa fa fa-bar-chart-o"></i>&nbsp数据网资源&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </button>
+                </div>
+                <div id="collapse7" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div class="btn-group-vertical">
+                            <ul>{{#link-to '' tagName="p" href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp网元</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp网元端口</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp链路</a>{{/link-to}}</ul>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                           <!--8-->
+                           
+                           <div class="accordion-group">
+                <div class="accordion-heading">
+                    <button type="button" class="btn btn-sm" data-toggle="collapse" data-parent="#accordion8"
+                            href="#collapse8">
+                      &nbsp&nbsp <i class="fa fa fa-bar-chart-o"></i>&nbsp业务网资源&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </button>
+                </div>
+                <div id="collapse8" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div class="btn-group-vertical">
+                            <ul>{{#link-to '' tagName="p" href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp区域</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp站点</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<a {{bindAttr href="view.href"}}
+                                    href="#"><i class="fa fa-dot-circle-o"></i>&nbsp机房</a>{{/link-to}}</ul>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                           <!--9-->
+                           
+                           
+                            
                         </div>
                     </div>
                 </div>

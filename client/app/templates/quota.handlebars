@@ -2,12 +2,12 @@
     <div class="col-md-2">
         
         
-  {{#link-to "quota.integrity" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-          href="#">完整性评测指标管理</a>{{/link-to}}
-  {{#link-to '' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-          href="#">唯一性评测指标管理</a>{{/link-to}}
-  {{#link-to '' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-          href="#">规范性评测指标管理</a>{{/link-to}}
+  {{#link-to "quota.integrity" tagName="p" href=false}}<a {{bindAttr href="view.href"}}
+          href="#"><i class="fa  fa-tachometer"></i>&nbsp完整性评测指标管理</a>{{/link-to}}
+  {{#link-to '' tagName="p" href=false}}<a {{bindAttr href="view.href"}}
+          href="#"><i class="fa  fa-tachometer"></i>&nbsp唯一性评测指标管理</a>{{/link-to}}
+  {{#link-to '' tagName="p" href=false}}<a {{bindAttr href="view.href"}}
+          href="#"><i class="fa  fa-tachometer"></i>&nbsp规范性评测指标管理</a>{{/link-to}}
         
         
          <!--折叠开始-->
@@ -17,28 +17,21 @@
                 <div class="accordion-heading">
                     <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion2"
                             href="#collapseOne">
-                        管理率评测指标管理
+                        <i class="fa  fa-tachometer"></i>&nbsp管理率评测指标管理&nbsp&nbsp&nbsp
                     </button>
                 </div>
                 <div id="collapseOne" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="btn-group-vertical">
-                            <ul>
-                              {{#link-to '' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">通信站点管理率</a>{{/link-to}}
-                              {{#link-to '' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">光缆资源管理率</a>{{/link-to}}
-                              {{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">传输设备管理率</a>{{/link-to}}
-                              {{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">交换网设备管理率</a>{{/link-to}}
-                              {{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">数据网设备管理率</a>{{/link-to}} 
-                              {{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">接入网设备管理率</a>{{/link-to}}
-                              {{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">生产实时控制业务管理率</a>{{/link-to}}       
-                            </ul>
+    <ul>
+      {{#link-to '' tagName="p" href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp通信站点管理率</button>{{/link-to}}
+      {{#link-to '' tagName="p" href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp光缆资源管理率</button>{{/link-to}}
+      {{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp传输设备管理率</button>{{/link-to}}
+      {{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp交换网设备管理率</button>{{/link-to}}
+      {{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp数据网设备管理率</button>{{/link-to}} 
+      {{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp接入网设备管理率</button>{{/link-to}}
+      {{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp生产实时控制业务管理率</button>{{/link-to}}       
+    </ul>
 
                         </div>
                     </div>
@@ -50,24 +43,18 @@
                 <div class="accordion-heading">
                     <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion2"
                             href="#collapseTwo">
-                        逻辑校验评测指标管理
+                        <i class="fa  fa-tachometer"></i>&nbsp逻辑校验评测指标管理
                     </button>
                 </div>
                 <div id="collapseTwo" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="btn-group-vertical">
-                            <ul>{{#link-to '' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">传输段逻辑校验</a>{{/link-to}}</ul>
-                            <ul>{{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">接入网链路使用电路</a>{{/link-to}}</ul>
-                            <ul>{{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">交换中继使用电路或光路</a>{{/link-to}}</ul>
-                            <ul>{{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">数据中继使用电路或光路</a>{{/link-to}}</ul>
-                            <ul>{{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">光路物理配线</a>{{/link-to}}</ul>
-                            <ul>{{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                    href="#">传输电路物理配线</a>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p" href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp传输段逻辑校验</button>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp接入网链路使用电路</button>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp交换中继使用电路或光路</button>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp数据中继使用电路或光路</button>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp光路物理配线</button>{{/link-to}}</ul>
+                            <ul>{{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp传输电路物理配线</button>{{/link-to}}</ul>
 
                         </div>
                     </div>
@@ -78,29 +65,21 @@
                 <div class="accordion-heading">
                     <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion3"
                             href="#collapseThree">
-                        准确性评测
+                        <i class="fa  fa-tachometer"></i>&nbsp准确性评测&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     </button>
                 </div>
                 <div id="collapseThree" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="btn-group-vertical">
                             <ul>
-                              {{#link-to "" tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">站点</a>{{/link-to}}
-                              {{#link-to '' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">设备</a>{{/link-to}}
-                              {{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">传输段关联光路</a>{{/link-to}}
-                              {{#link-to '' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">接入网关联传输电路</a>{{/link-to}}
-                              {{#link-to '' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">交换中继使用传输电路</a>{{/link-to}}
-                              {{#link-to '' tagName="li"  href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">数据链路使用传输电路或光路</a>{{/link-to}}
-                              {{#link-to '' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">光路配线标签</a>{{/link-to}}
-                              {{#link-to '' tagName="li" href=false}}<a {{bindAttr href="view.href"}}
-                                      href="#">传输电路配线标签</a>{{/link-to}}
+                              {{#link-to "" tagName="p" href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp站点</button>{{/link-to}}
+                              {{#link-to '' tagName="p" href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp设备</button>{{/link-to}}
+                              {{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp传输段关联光路</button>{{/link-to}}
+                              {{#link-to '' tagName="p" href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp接入网关联传输电路</button>{{/link-to}}
+                              {{#link-to '' tagName="p" href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp交换中继使用传输电路</button>{{/link-to}}
+                              {{#link-to '' tagName="p"  href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp数据链路使用传输电路或光路</button>{{/link-to}}
+                              {{#link-to '' tagName="p" href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp光路配线标签</button>{{/link-to}}
+                              {{#link-to '' tagName="p" href=false}}<button  class="btn btn-primary btn-sm" ><i class="fa fa-tachometer"></i>&nbsp传输电路配线标签</button>{{/link-to}}
                           
                             </ul>
 
